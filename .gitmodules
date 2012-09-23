@@ -1,0 +1,3 @@
+[submodule "huaweigeneric-ril"]
+	path = huaweigeneric-ril
+	url = git://github.com/snargledorf/huaweigeneric-ril.git
