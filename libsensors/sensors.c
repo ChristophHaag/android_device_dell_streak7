@@ -292,7 +292,7 @@ ALOGD("activate_orientation(%d)", enable) ;
 
 static void poll_accelerometer(sensors_event_t *values)
 {
-//LOGD("## poll_accelerometer ##") ;
+//ALOGD("## poll_accelerometer ##") ;
 	int fd;
 	int nread;
 	int data[3];
@@ -308,11 +308,11 @@ static void poll_accelerometer(sensors_event_t *values)
 	lseek(fd, 0, SEEK_SET);
 	nread = read(fd, buf, SIZE_OF_BUF);
 
-//LOGD("nread %d", nread ) ;
+//ALOGD("nread %d", nread ) ;
 //	if (nread == sizeof(buf)) {
 		sscanf(buf, "(%d,%d,%d)", &data[0], &data[1], &data[2]) ;
 //	}
-//LOGD("polled(%d:%d:%d)", data[0], data[1], data[2] ) ;
+//ALOGD("polled(%d:%d:%d)", data[0], data[1], data[2] ) ;
 	values->acceleration.status = SENSOR_STATUS_ACCURACY_HIGH;
 	values->acceleration.x = (float) data[0];
 	values->acceleration.x *= CONVERT_A;

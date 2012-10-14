@@ -7,6 +7,6 @@
 /misc           emmc            /dev/block/platform/sdhci-tegra.3/by-num/p5
 /staging        emmc            /dev/block/platform/sdhci-tegra.3/by-num/p6
 /data           ext4            /dev/block/platform/sdhci-tegra.3/by-num/p13	length=-32768
-/sdcard		vfat		/dev/block/platform/sdhci-tegra.3/by-num/p14
+/sdcard		ext4		/dev/block/platform/sdhci-tegra.3/by-num/p14
 /sdcard2	vfat		/dev/block/platform/sdhci-tegra.2/mmcblk2p1
 

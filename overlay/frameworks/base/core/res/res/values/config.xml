@@ -193,9 +193,5 @@
          in pages of size (in KB) indicated by this value -->
     <integer name="config_cursorWindowSize">2048</integer>
 
-     <!-- Values greater or equal to 0 will enable electronbeam screen-on
-     animation with the specified delay (in milliseconds), -1 will disable the animation -->
-    <integer name="config_screenOnAnimation">-1</integer>
-
     <bool name="config_allowAllRotations">true</bool>
 </resources>

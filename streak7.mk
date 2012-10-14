@@ -56,7 +56,9 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/usr/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
   $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
-  $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
+  $(LOCAL_PATH)/prebuilts/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
+  $(LOCAL_PATH)/libaudio/audio_policy.conf:system/etc/audio_policy.conf \
+  $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
   
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf
@@ -65,11 +67,11 @@ PRODUCT_PACKAGES += \
     sensors.tegra \
     lights.tegra \
     com.android.future.usb.accessory \
-    audio.primary.tegra \
     audio.a2dp.default \
-    audio_policy.tegra \
-    libtinyalsa \
     setup_fs \
+    camera.tegra \
+    libinvensense_mpl \
+    libaudioutils \
     make_ext4fs \
     drmserver \
     Gallery2 \

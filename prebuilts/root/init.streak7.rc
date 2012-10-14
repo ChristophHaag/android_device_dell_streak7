@@ -3,19 +3,20 @@ import init.streak7.usb.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
-    export EXTERNAL_STORAGE /storage/sdcard0
-    mkdir /storage 0550 system sdcard_r
-    mkdir /storage/sdcard0 0000 system system
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
-
-    # make the pathes for the external media mounts
-    mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/usbdisk 0000 system system
-    symlink /storage/usbdisk /mnt/usbdisk
-
-# make the pathes for the external media mounts
-    mkdir /storage/sdcard1 0000 system system
+    export EXTERNAL_STORAGE /mnt/sdcard
+    export REMOVABLE_STORAGE /mnt/sdcard2
+    mkdir /mnt/sdcard 0050 system system
+    mount ext4 /dev/block/mmcblk3p14 /mnt/sdcard
+    # Internal SD hack
+    # This is just a workaround until I can get the internal SD storage to mount using fstab.
+    symlink /mnt/sdcard /sdcard
+       
+    mkdir /mnt/sdcard2 0050 system system
+    symlink /mnt/sdcard2 /sdcard2
+    
+    # create directory for mounting usb drives
+    mkdir /mnt/usbdrive 0666 system system
+    symlink /mnt/usbdrive /usbdrive
 
 on fs
 # Okpa, symbolic link named partitions
@@ -25,12 +26,19 @@ on fs
     symlink /dev/block/mmcblk3p12 /dev/general_setting
     symlink /dev/block/mmcblk3p15 /dev/fa
     symlink /dev/block/mmcblk3p16 /dev/otp
+    chown root system /dev/VAR
+    chmod 0660 /dev/VAR
+    chown root system /dev/WP1
+    chmod 0660 /dev/WP1
+    chown root system /dev/MSC
+    chmod 0660 /dev/MSC
 
-    mount ext4 /dev/block/mmcblk3p3 /system wait noatime nodiratime
+    mount ext4 /dev/APP /system wait ro
     exec /system/bin/do_fsck
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount ext4 /dev/block/mmcblk3p13 /data wait noatime nosuid nodev nodiratime
-    mount ext4 /dev/block/mmcblk3p4 /cache wait noatime nosuid nodev nodiratime
+    mount ext4 /dev/UDA /data wait noatime nosuid nodev
+    mount ext4 /dev/CAC /cache wait noatime nosuid nodev
+
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -90,6 +98,11 @@ on boot
     chmod 664 /sys/bus/iio/devices/device0/lux
     chmod 664 /sys/bus/iio/devices/device0/proxim_ir
 
+#Test for sensors
+    chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/mode
+    chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/rate
+    chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/range
+
 # Emily, for application(FVS) access
     chmod 666 /dev/ata_misc_capkey
     chmod 666 /dev/misc_keypad
@@ -104,6 +117,8 @@ on boot
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1000000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
+#This is a test of idle power
+    write /sys/module/cpuidle/parameters/lp2_in_idle 0
 
 # Default Read Ahead value for sdcards
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
@@ -120,13 +135,6 @@ chown system /sys/class/gpio/gpio143/value
 
 # HW.Lin
 chown system /sys/class/gpio/gpio145/value
-# RIL
-# Define TCP buffer sizes for hspa networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.umts  4096,87380,524288,4096,87380,524288
-    setprop net.tcp.buffersize.hspa  4096,87380,524288,4096,87380,524288
-    setprop net.tcp.buffersize.hsdpa 4096,87380,524288,4096,87380,524288
-    setprop net.tcp.buffersize.hsupa 4096,87380,524288,4096,87380,524288
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
@@ -136,11 +144,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 #   group wifi inet keystore
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service dhcpcd /system/bin/dhcpcd -ABKL
-    class main
     disabled
     oneshot
 
@@ -154,12 +157,13 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
     disabled
     oneshot
 
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL -f/system/etc/dhcpcd/dhcpcd.conf
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
+	class main
     disabled
     oneshot
 
@@ -177,10 +181,11 @@ on property:init.svc.wpa_supplicant=stopped
 # WH Lee, Use external SD card
 #service sdcard /system/bin/sdcard /data/media 1023 1023
 #    class late_start
+#    oneshot
+#service sdcard_oem /system/bin/sdcard_oem
+#    class late_start
+#    oneshot
 
-service sdcard_oem /system/bin/sdcard_oem /data/media 1023 1023
-   class late_start
-   
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
 service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugreport
     class main
@@ -190,8 +195,7 @@ service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugrep
 
 #BCM
 service hciattach /system/bin/brcm_patchram_plus --enable_hci \
-    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd --pcm_role slave \
-    --enable_lpm /dev/ttyHS2
+    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd --enable_lpm /dev/ttyHS2
     class main
     user bluetooth
     group bluetooth net_bt_admin
@@ -222,9 +226,6 @@ service wifid /system/bin/wifid
 # filesystem, so we support FAT as of now.
 on device-added-/sys/block/sda
     mount vfat /dev/block/sda /mnt/usbdrive
-
-on device-removed-/sys/block/sda
-    umount /mnt/usbdrive
 
 #Prepare TF service
 service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d

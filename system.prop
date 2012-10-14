@@ -10,3 +10,5 @@ video.accelerate.hw=1
 debug.sf.hw=1
 sys.usb.config=mtp,adb
 media.tegra.max.out.channels=2
+ro.emmc.sdcard.partition=14
+persist.fuse_sdcard=false

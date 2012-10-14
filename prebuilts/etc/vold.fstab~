@@ -1,4 +1,4 @@
-## Vold 2.0 fstab for ventana
+## Vold 2.0 fstab for streak7
 
 #######################
 ## Regular device mount
@@ -9,9 +9,8 @@
 ## part         - Partition # (1 based), or 'auto' for first usable partition.
 ## <sysfs_path> - List of sysfs paths to source devices
 ######################
-# Mounts the first usable partition of the specified device
-dev_mount emmc /mnt/sdcard0 auto /devices/platform/sdhci-tegra.3/mmc_host
-dev_mount sdcard /mnt/sdcard1 auto /devices/platform/sdhci-tegra.2/mmc_host
-
-
+#dev_mount sdcard /mnt/sdcard auto /devices/platform/sdhci-tegra.3/mmc_host
+dev_mount sdcard /mnt/sdcard auto /dev/block/mmcblk3p14
+dev_mount sdcard2 /mnt/sdcard2 auto /sys/devices/platform/sdhci-tegra.2/mmc_host/mmc1
+dev_mount usbdrive /mnt/usbdrive auto /devices/platform/tegra-ehci.2/usb2
 
