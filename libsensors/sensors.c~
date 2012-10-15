@@ -844,4 +844,3 @@ static int m_open_sensors(const struct hw_module_t *module,
 	}
 	return status;
 }
-

@@ -2,21 +2,24 @@ import init.streak7.usb.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
+    # for backwards compatibility
+    export EXTERNAL_STORAGE /storage/sdcard0
 
-    export EXTERNAL_STORAGE /mnt/sdcard
-    export REMOVABLE_STORAGE /mnt/sdcard2
-    mkdir /mnt/sdcard 0050 system system
-    mount ext4 /dev/block/mmcblk3p14 /mnt/sdcard
-    # Internal SD hack
-    # This is just a workaround until I can get the internal SD storage to mount using fstab.
-    symlink /mnt/sdcard /sdcard
-       
-    mkdir /mnt/sdcard2 0050 system system
-    symlink /mnt/sdcard2 /sdcard2
-    
+    # create directory for mounting internal storage
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+
+    # create directory for mounting external sdcard
+    mkdir /storage/sdcard1 0000 system system
+    symlink /storage/sdcard1 /external_sd
+    symlink /storage/sdcard1 /mnt/external_sd
+
     # create directory for mounting usb drives
-    mkdir /mnt/usbdrive 0666 system system
-    symlink /mnt/usbdrive /usbdrive
+    mkdir /storage/usbdisk 0666 system system
+    symlink /storage/usbdisk /mnt/usbdisk
+    symlink /mnt/usbdisk /usbdisk
 
 on fs
 # Okpa, symbolic link named partitions
@@ -98,10 +101,19 @@ on boot
     chmod 664 /sys/bus/iio/devices/device0/lux
     chmod 664 /sys/bus/iio/devices/device0/proxim_ir
 
-#Test for sensors
     chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/mode
-    chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/rate
     chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/range
+    chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/rate
+    chmod 664 /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/data
+    chmod 664 /sys/bus/i2c/drivers/mm_ak8975/0-000c/mode
+    chmod 664 /sys/bus/i2c/drivers/mm_ak8975/0-000c/show_flux
+
+    chown system system /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/mode
+    chown system system /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/range
+    chown system system /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/rate
+    chown system system /sys/bus/i2c/drivers/lsm303dlh_a/0-0009/data
+    chown system system /sys/bus/i2c/drivers/mm_ak8975/0-000c/mode
+    chown system system /sys/bus/i2c/drivers/mm_ak8975/0-000c/show_flux
 
 # Emily, for application(FVS) access
     chmod 666 /dev/ata_misc_capkey
@@ -117,8 +129,7 @@ on boot
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1000000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
-#This is a test of idle power
-    write /sys/module/cpuidle/parameters/lp2_in_idle 0
+    write /sys/module/cpuidle/parameters/lp2_in_idle 1
 
 # Default Read Ahead value for sdcards
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
