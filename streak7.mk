@@ -24,10 +24,12 @@ PRODUCT_COPY_FILES += \
 vendor/dell/streak7/proprietary/lib/libasound.so:obj/lib/libasound.so \
 vendor/dell/streak7/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
 $(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
-$(LOCAL_PATH)/files/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
+vendor/dell/streak7/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
 hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
 
+
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/root/sbin/texfat.ko:root/sbin/texfat.ko \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/prebuilts/etc/nvram.txt:system/etc/wifi/nvram.txt \
@@ -56,10 +58,10 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/usr/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
   $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
-  $(LOCAL_PATH)/prebuilts/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
   $(LOCAL_PATH)/libaudio/audio_policy.conf:system/etc/audio_policy.conf \
+  $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
-  
+    
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf
 
@@ -68,13 +70,19 @@ PRODUCT_PACKAGES += \
     lights.tegra \
     com.android.future.usb.accessory \
     audio.a2dp.default \
+    audio.usb.default \
+    audio.primary.tegra \
+    audio_policy.tegra \
     setup_fs \
-    camera.tegra \
     libinvensense_mpl \
     libaudioutils \
+    tinyplay \
+    liba2dp \
     make_ext4fs \
     drmserver \
-    Gallery2 \
+    tinymix \
+    recovery_mkfs.vfat \
+    mkfs.vfat \
     librs_jni \
     libdrmframework_jni
 
@@ -85,5 +93,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
 
-DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.rommanager.developerid=team-streak \
+    ro.modversion=icy-Streak7
 
