@@ -21,10 +21,8 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcm4329/Android.mk)
 
 PRODUCT_COPY_FILES += \
-vendor/dell/streak7/proprietary/lib/libasound.so:obj/lib/libasound.so \
 vendor/dell/streak7/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
 $(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
-vendor/dell/streak7/proprietary/lib/libaudio.so:obj/lib/libaudio.so \
 hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
 
 
@@ -58,7 +56,7 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/usr/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
   $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
-  $(LOCAL_PATH)/libaudio/audio_policy.conf:system/etc/audio_policy.conf \
+  $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
   $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
     
@@ -66,11 +64,9 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf
 
 PRODUCT_PACKAGES += \
-    sensors.tegra \
     lights.tegra \
     com.android.future.usb.accessory \
     audio.a2dp.default \
-    audio.usb.default \
     audio.primary.tegra \
     audio_policy.tegra \
     setup_fs \
@@ -80,7 +76,7 @@ PRODUCT_PACKAGES += \
     liba2dp \
     make_ext4fs \
     drmserver \
-    tinymix \
+    libasound \
     recovery_mkfs.vfat \
     mkfs.vfat \
     librs_jni \

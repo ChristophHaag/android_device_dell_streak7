@@ -24,7 +24,7 @@ on early-init
 on fs
 # Okpa, symbolic link named partitions
     exec /sbin/ln_named_part mmcblk3 /dev
-
+    
 # misc setting
     symlink /dev/block/mmcblk3p12 /dev/general_setting
     symlink /dev/block/mmcblk3p15 /dev/fa

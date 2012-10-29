@@ -24,7 +24,7 @@ on early-init
 on fs
 # Okpa, symbolic link named partitions
     exec /sbin/ln_named_part mmcblk3 /dev
-
+    
 # misc setting
     symlink /dev/block/mmcblk3p12 /dev/general_setting
     symlink /dev/block/mmcblk3p15 /dev/fa
@@ -219,7 +219,7 @@ service sensors_daemon /system/bin/sensors_daemon
 
 # WH Lee
 # Start GPS daemon
-service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gpsconfig.xml
+service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gps/gpsconfig.xml
     class late_start
     user root
     group root

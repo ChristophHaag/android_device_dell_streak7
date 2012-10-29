@@ -27,14 +27,11 @@ lib/libnvodm_hdmi.so
 lib/libnvodm_misc.so
 lib/libnvomxadaptor.so
 lib/libnvparser.so
-bin/sdcard_oem
 lib/libnvtvmr.so
 lib/omxplayer.so
 lib/libardrv_dynamic.so
 lib/libnvddk_2d_v2.so
 lib/liba2dp.so
-lib/libasound.so
-lib/libaudio.so
 lib/libcamera.so
 lib/libcgdrv.so
 lib/libnvmm.so
@@ -119,7 +116,6 @@ lib/egl/libEGL_tegra.so
 lib/egl/libGLESv1_CM_tegra.so
 lib/egl/libGLESv2_tegra.so
 lib/egl/egl.cfg
-lib/gps.tegra.so
 lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
 lib/hw/overlay.tegra.so
