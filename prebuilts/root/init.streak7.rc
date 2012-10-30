@@ -36,11 +36,12 @@ on fs
     chown root system /dev/MSC
     chmod 0660 /dev/MSC
     
-    mount ext4 /dev/APP /system wait ro
+    #mount ext4 /dev/APP /system wait ro
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    exec /system/bin/do_fsck
-    mount ext4 /dev/CAC /cache wait noatime nosuid nodev
-    mount ext4 /dev/UDA /data wait noatime nosuid nodev
+    mount_all /fstab.streak7
+    #exec /system/bin/do_fsck
+    #mount ext4 /dev/CAC /cache wait noatime nosuid nodev
+    #mount ext4 /dev/UDA /data wait noatime nosuid nodev
        
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -195,7 +196,7 @@ on property:init.svc.wpa_supplicant=stopped
 # deamon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media wil be created with user and group media_rw (1023)
 # WH Lee, Use external SD card
-service sdcard /system/bin/sdcard /data/media 1023 1023
+service sdcard_oem /system/bin/sdcard_oem /data/media 1023 1023
     class late_start
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys

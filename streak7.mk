@@ -57,6 +57,7 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
   $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
+  $(LOCAL_PATH)/prebuilts/root/fstab.streak7:root/fstab.streak7 \
   $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
     

@@ -69,7 +69,7 @@
 #define PERC_TO_HEADSET_VOLUME(x) ( (int)((x) * 63 ))
 #define PERC_TO_SPEAKER_VOLUME(x) ( (int)((x) * 63 ))
 
-#define OUT_PERIOD_SIZE 880
+#define OUT_PERIOD_SIZE 1024
 #define OUT_SHORT_PERIOD_COUNT 2
 #define OUT_LONG_PERIOD_COUNT 8
 #define OUT_SAMPLING_RATE 44100
@@ -80,7 +80,7 @@
 
 #define SCO_PERIOD_SIZE 256
 #define SCO_PERIOD_COUNT 4
-#define SCO_SAMPLING_RATE 8000
+#define SCO_SAMPLING_RATE 10000
 
 /* We need this stabilization time before outputting captured audio to app */
 #define FRAMES_MUTED_AT_CAPTURE_START 2048

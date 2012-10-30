@@ -75,6 +75,7 @@ lib/libnvtestio.so
 lib/libnvtestresults.so
 lib/libnvwinsys.so
 lib/libnvwsi.so
+bin/sdcard_oem
 etc/firmware/nvddk_audiofx_core.axf
 etc/firmware/nvddk_audiofx_transport.axf
 etc/firmware/nvmm_aacdec.axf
