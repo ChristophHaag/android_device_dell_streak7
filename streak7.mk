@@ -21,7 +21,6 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcm4329/Android.mk)
 
 PRODUCT_COPY_FILES += \
-vendor/dell/streak7/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
 $(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
 hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
 
@@ -71,13 +70,11 @@ PRODUCT_PACKAGES += \
     audio.primary.tegra \
     audio_policy.tegra \
     setup_fs \
+    CMFileManager \
     libinvensense_mpl \
     libaudioutils \
-    tinyplay \
-    liba2dp \
     make_ext4fs \
     drmserver \
-    libasound \
     recovery_mkfs.vfat \
     mkfs.vfat \
     librs_jni \
@@ -92,7 +89,4 @@ PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=team-streak \
-    ro.modversion=icy-Streak7
 
