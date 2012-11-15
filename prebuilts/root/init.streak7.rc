@@ -64,9 +64,6 @@ on post-fs-data
     mkdir /data/systemlog/kwakelock_main 0777 root root
     mkdir /data/systemlog/reload 0777 root root
 
-#NTFS exFAT support
-    insmod /sbin/texfat.ko
-
 on boot
 # bluetooth
     # UART device

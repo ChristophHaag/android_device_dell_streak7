@@ -24,16 +24,14 @@ PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
 hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
 
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/root/sbin/texfat.ko:root/sbin/texfat.ko \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/prebuilts/etc/nvram.txt:system/etc/wifi/nvram.txt \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.rc:root/init.streak7.rc \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.usb.rc:root/init.streak7.usb.rc \
     $(LOCAL_PATH)/prebuilts/root/ueventd.streak7.rc:root/ueventd.streak7.rc \
-    $(LOCAL_PATH)/prebuilts/root/ln_named_part:root/sbin/ln_named_part \
+    $(LOCAL_PATH)/prebuilts/root/sbin/ln_named_part:root/sbin/ln_named_part \
     $(LOCAL_PATH)/prebuilts/root/default.prop:root/default.prop \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
@@ -68,15 +66,12 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     audio.a2dp.default \
     audio.primary.tegra \
-    audio_policy.tegra \
     setup_fs \
     CMFileManager \
     libinvensense_mpl \
     libaudioutils \
     make_ext4fs \
     drmserver \
-    recovery_mkfs.vfat \
-    mkfs.vfat \
     librs_jni \
     libdrmframework_jni
 

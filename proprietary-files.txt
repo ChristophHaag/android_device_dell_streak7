@@ -136,6 +136,6 @@ bin/nvtest
 bin/glgps
 etc/gps.conf
 etc/gpsconfig.xml
-lib/libstagefrighthw.so
 bin/sensors_daemon
+
 
