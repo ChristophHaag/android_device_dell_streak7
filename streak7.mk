@@ -22,6 +22,7 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcm4329/Android.mk)
 
 PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
+$(LOCAL_PATH)/files/libaudio.so:obj/lib/libaudio.so \
 hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
 
 PRODUCT_COPY_FILES += \
@@ -54,19 +55,19 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/etc/media_profiles.xml:system/etc/media_profiles.xml \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
   $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
-  $(LOCAL_PATH)/prebuilts/root/fstab.streak7:root/fstab.streak7 \
   $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
     
-PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf
-
 PRODUCT_PACKAGES += \
     lights.tegra \
     com.android.future.usb.accessory \
     audio.a2dp.default \
     audio.primary.tegra \
     setup_fs \
+    libtinyalsa \
+    tinyplay \
+    tinycap \
+    tinymix \
     CMFileManager \
     libinvensense_mpl \
     libaudioutils \

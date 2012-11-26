@@ -12,7 +12,7 @@ on early-init
     symlink /storage/sdcard0 /mnt/sdcard
 
     # create directory for mounting external sdcard
-    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/sdcard1 0550 system system
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
 
@@ -63,9 +63,6 @@ on post-fs-data
     mkdir /data/systemlog/kwakelock 0777 root root
     mkdir /data/systemlog/kwakelock_main 0777 root root
     mkdir /data/systemlog/reload 0777 root root
-
-#NTFS exFAT support
-    insmod /sbin/texfat.ko
 
 on boot
 # bluetooth

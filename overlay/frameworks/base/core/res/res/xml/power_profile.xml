@@ -26,8 +26,8 @@
     <item name="wifi.on">3</item>
     <item name="wifi.active">20</item>
     <item name="wifi.scan">8</item>
-    <item name="dsp.audio">14</item>
-    <item name="dsp.video">30</item>
+    <item name="dsp.audio">88</item>
+    <item name="dsp.video">88</item>
     <item name="radio.active">0</item>
     <item name="radio.scanning">0</item>
     <item name="gps.on">10</item>

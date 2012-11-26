@@ -29,9 +29,7 @@ lib/omxplayer.so
 lib/libardrv_dynamic.so
 lib/libnvddk_2d_v2.so
 lib/liba2dp.so
-lib/libasound.so
 lib/libaudio.so
-lib/libaudiopolicy.so
 lib/libcamera.so
 lib/libcgdrv.so
 lib/libnvmm.so
@@ -125,7 +123,6 @@ lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
 lib/hw/overlay.tegra.so
 lib/hw/sensors.default.so
-lib/hw/tegra_alsa.streak7.so
 lib/gps.tegra.so
 bin/sensors_daemon
 bin/wifid

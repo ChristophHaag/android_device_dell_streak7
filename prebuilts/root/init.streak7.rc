@@ -12,7 +12,7 @@ on early-init
     symlink /storage/sdcard0 /mnt/sdcard
 
     # create directory for mounting external sdcard
-    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/sdcard1 0550 system system
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
 
@@ -36,12 +36,11 @@ on fs
     chown root system /dev/MSC
     chmod 0660 /dev/MSC
     
-    #mount ext4 /dev/APP /system wait ro
+    mount ext4 /dev/APP /system wait ro
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount_all /fstab.streak7
-    #exec /system/bin/do_fsck
-    #mount ext4 /dev/CAC /cache wait noatime nosuid nodev
-    #mount ext4 /dev/UDA /data wait noatime nosuid nodev
+    exec /system/bin/do_fsck
+    mount ext4 /dev/CAC /cache wait noatime nosuid nodev
+    mount ext4 /dev/UDA /data wait noatime nosuid nodev
        
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
