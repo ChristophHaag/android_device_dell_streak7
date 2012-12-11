@@ -271,7 +271,7 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = "Speaker Mixer DAC2SPK Playback Switch",
-        .intval = 0,
+        .intval = 1,
     },
     {
         .ctl_name = "Mono Mixer LI2MONO Playback Switch",
