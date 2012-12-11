@@ -143,7 +143,7 @@ struct route_setting defaults[] = {
     },
     {
 	.ctl_name = MIXER_SPEAKER_PLAYBACK_VOLUME,
-	.intval = PERC_TO_SPEAKER_VOLUME(1),
+	.intval = PERC_TO_SPEAKER_VOLUME(1.0),
     },
     {
 	.ctl_name = MIXER_SPEAKER_PLAYBACK_SWITCH,
@@ -151,11 +151,11 @@ struct route_setting defaults[] = {
     },
     {
 	.ctl_name = MIXER_HEADSET_PLAYBACK_VOLUME,
-	.intval = PERC_TO_HEADSET_VOLUME(1),
+	.intval = PERC_TO_HEADSET_VOLUME(1.0),
     },
     {
 	.ctl_name = MIXER_HEADSET_PLAYBACK_SWITCH,
-	.intval = 1,
+	.intval = 0,
     },
     {
 	.ctl_name = MIXER_MICL_CAPTURE_VOLUME,
