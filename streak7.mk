@@ -56,25 +56,32 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
   $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
   $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+  $(LOCAL_PATH)/prebuilts/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
     
 PRODUCT_PACKAGES += \
     lights.tegra \
+    camera.tegra \
     com.android.future.usb.accessory \
     audio.a2dp.default \
     audio.primary.tegra \
+    audio.usb.default \
     setup_fs \
-    libtinyalsa \
-    tinyplay \
-    tinycap \
-    tinymix \
-    CMFileManager \
     libinvensense_mpl \
     libaudioutils \
     make_ext4fs \
     drmserver \
     librs_jni \
     libdrmframework_jni
+
+PRODUCT_PACKAGES += \
+    liba2dp \
+    libpkip \
+    tinyplay \
+    tinycap \
+    tinymix \
+    CMFileManager \
+    wmiconfig
 
 include frameworks/native/build/tablet-dalvik-heap.mk
 
