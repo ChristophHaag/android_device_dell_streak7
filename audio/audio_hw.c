@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
- * Copyright (C) 2011-12 Eduardo José Tagle <ejtagle@tutopia.com>
+ * Copyright (C) 2011-12 Eduardo Josï¿½ Tagle <ejtagle@tutopia.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -255,7 +255,7 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = "Speaker Mixer LI2SPK Playback Switch",
-        .intval = 0,
+        .intval = 1,
     },
     {
         .ctl_name = "Speaker Mixer PHO2SPK Playback Switch",
@@ -271,7 +271,7 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = "Speaker Mixer DAC2SPK Playback Switch",
-        .intval = 0,
+        .intval = 1,
     },
     {
         .ctl_name = "Mono Mixer LI2MONO Playback Switch",
