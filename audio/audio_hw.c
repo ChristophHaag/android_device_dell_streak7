@@ -315,11 +315,11 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = "Right HP Mixer DAC2HPR Playback Switch",
-        .intval = 1,
+        .intval = 0,
     },
     {
         .ctl_name = "Right HP Mixer ADCR2HPR Playback Switch",
-        .intval = 0,
+        .intval = 1,
     },
     {
         .ctl_name = "Left HP Mixer LI2HPL Playback Switch",
@@ -343,7 +343,7 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = "Left HP Mixer ADCL2HPL Playback Switch",
-        .intval = 0,
+        .intval = 1,
     },
     {
         .ctl_name = "Right Headphone Out Mux",
@@ -422,6 +422,39 @@ struct route_setting speaker_route[] = {
     {
         .ctl_name = MIXER_SPEAKER_PLAYBACK_SWITCH,
 		.intval = 1,
+    },
+	
+	{
+        .ctl_name = MIXER_SPEAKER_PLAYBACK_VOLUME,
+		.intval = PERC_TO_SPEAKER_VOLUME(0.6),
+    },
+	{
+        .ctl_name = "Speaker Mixer DAC2SPK Playback Switch",
+        .intval = 1,
+    },
+	{
+        .ctl_name = "Right HP Mixer ADCR2HPR Playback Switch",
+        .intval = 1,
+    },
+	{
+        .ctl_name = "Left HP Mixer ADCL2HPL Playback Switch",
+        .intval = 1,
+    },
+	{
+        .ctl_name = "Right HP Mixer DAC2HPR Playback Switch",
+        .intval = 1,
+    },
+	{
+        .ctl_name = "Left HP Mixer DAC2HPL Playback Switch",
+        .intval = 1,
+    },
+	{
+        .ctl_name = "Right Speaker Out Mux",
+        .strval = "HPR Mixer",
+    },
+	{
+        .ctl_name = "Left Speaker Out Mux",
+        .strval = "HPL Mixer",
     },
     {
         .ctl_name = NULL,
