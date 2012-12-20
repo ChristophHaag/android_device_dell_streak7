@@ -1,41 +1,33 @@
 <mixer>
   <!-- These are the initial mixer settings -->
-  <ctl name="Speaker ZC Switch" value="1" />
   <ctl name="Speaker Switch" value="1" />
-  <ctl name="Speaker Volume" value="1" />
-  <ctl name="PCM Playback Switch" value="1" />
-  <ctl name="Speaker Mixer DAC2SPK Playback Switch" value="1" />
-  <ctl name="Right HP Mixer ADCR2HPR Playback Switch" value="1" />
-  <ctl name="Left HP Mixer ADCL2HPL Playback Switch" value="1" />
-  <ctl name="Left HP Mixer DAC2HPL Playback Switch" value="1" />
-  <ctl name="Right HP Mixer DAC2HPR Playback Switch" value="1" />
-  <ctl name="Right Speaker Out Mux" value="HPR Mixer" />
-  <ctl name="Left Speaker Out Mux" value="HPL Mixer" />
+  <ctl name="Right Speaker Mixer" value="1"/>
+  <ctl name="Left Speaker Mixer" value="1"/>
+  <ctl name="Speaker ZC Switch" value="0" />
+  
   <ctl name="Internal Mic Switch" value="1" />
   <ctl name="Headphone ZC Switch" value="0" />
+  <ctl name="Headphone Switch" value="0" />
   <ctl name="Left Input PGA Switch" value="0" />
   <ctl name="Right Input PGA Switch" value="0" />
+  <ctl name="Digital Capture Volume" value="0" />
 
   <path name="speaker">
-    <ctl name="Speaker ZC Switch" value="1" />
     <ctl name="Speaker Switch" value="1" />
-    <ctl name="Speaker Volume" value="1" />
-    <ctl name="PCM Playback Switch" value="1" />
-    <ctl name="Speaker Mixer DAC2SPK Playback Switch" value="1" />
-    <ctl name="Right HP Mixer ADCR2HPR Playback Switch" value="1" />
-    <ctl name="Left HP Mixer ADCL2HPL Playback Switch" value="1" />
-    <ctl name="Left HP Mixer DAC2HPL Playback Switch" value="1" />
-    <ctl name="Right HP Mixer DAC2HPR Playback Switch" value="1" />
-    <ctl name="Right Speaker Out Mux" value="HPR Mixer" />
-    <ctl name="Left Speaker Out Mux" value="HPL Mixer" />
-    <ctl name="Headphone ZC Switch" value="0" />
+  	<ctl name="Right Speaker Mixer" value="1"/>
+  	<ctl name="Left Speaker Mixer" value="1"/>
+  	<ctl name="Speaker ZC Switch" value="1" />
+	<ctl name="Headphone ZC Switch" value="0" />
+  	<ctl name="Headphone Switch" value="0" />
   </path>
 
   <path name="headphone">
-    <ctl name="Speaker ZC Switch" value="0" />
-    <ctl name="Speaker Switch" value="0" />
-    <ctl name="Speaker Mixer DAC2SPK Playback Switch" value="0" />
-    <ctl name="Headphone Jack Switch" value="1" />
+  	<ctl name="Speaker ZC Switch" value="0" />
+	<ctl name="Right Speaker Mixer" value="0"/>
+  	<ctl name="Left Speaker Mixer" value="0"/>
+	<ctl name="Headphone ZC Switch" value="1" />
+  	<ctl name="Headphone Switch" value="1" />
+    
   </path>
   
   <path name="hdmi">
@@ -46,16 +38,14 @@
 
   <path name="main-mic-top">
     <ctl name="Internal Mic Switch" value="1" />
-    <ctl name="HPF Switch" value="1"/>
-    <ctl name="Right Input PGA Switch" value="DMIC"/>
-    <ctl name="Left Input PGA Switch" value="DMIC"/>
+    <ctl name="Right Input PGA Switch" value="0"/>
+    <ctl name="Left Input PGA Switch" value="0"/>
   </path>
 
   <path name="main-mic-left">
     <ctl name="Internal Mic Switch" value="1" />
-    <ctl name="HPF Switch" value="1"/>
-    <ctl name="Right Input PGA Switch" value="DMIC"/>
-    <ctl name="Left Input PGA Switch" value="DMIC"/>
+    <ctl name="Right Input PGA Switch" value="0"/>
+    <ctl name="Left Input PGA Switch" value="0"/>
   </path>
 
   <path name="headset-mic">
