@@ -37,18 +37,26 @@
 
 
 /* Mixer control names */
-#define MIXER_PCM_PLAYBACK_VOLUME     		"Line Out Volume"
+#define LINE_OUT_PLAYBACK_VOLUME     		"Line Out Volume"
+#define LINE_OUT_PLAYBACK_SWITCH			"Line Out Switch"
+#define LINE_OUT_SWITCH			     		"Line Out ZC Switch"
+
 #define MIXER_HEADSET_PLAYBACK_VOLUME       "Headphone Volume"
 #define MIXER_SPEAKER_PLAYBACK_VOLUME       "Speaker Volume"
+
 #define MIXER_MIC_CAPTURE_VOLUME            "Digital Capture Volume"
 
 #define MIXER_HEADSET_PLAYBACK_SWITCH       "Headphone Switch"
 #define MIXER_SPEAKER_PLAYBACK_SWITCH       "Speaker Switch"
+
 #define MIXER_MIC_LEFT_CAPTURE_SWITCH       "Left Input PGA Switch"
 #define MIXER_MIC_RIGHT_CAPTURE_SWITCH      "Right Input PGA Switch"
 
 #define HEADPHONE_JACK_SWITCH				"Headphone ZC Switch"
 #define INTERNAL_SPEAKER_SWITCH				"Speaker ZC Switch"
+#define MIXER_SPEAKER_RIGHT					"Right Speaker Mixer"
+#define MIXER_SPEAKER_LEFT					"Left Speaker Mixer"
+
 #define INTERNAL_MIC_SWITCH					"Internal Mic Switch"
 
 /* ALSA card */
@@ -63,7 +71,7 @@
 #define PERC_TO_PCM_VOLUME(x)     ( (int)((x) * 31 )) 
 #define PERC_TO_CAPTURE_VOLUME(x) ( (int)((x) * 31 ))
 #define PERC_TO_HEADSET_VOLUME(x) ( (int)((x) * 31 )) 
-#define PERC_TO_SPEAKER_VOLUME(x) ( (int)((x) * 31 )) 
+#define PERC_TO_SPEAKER_VOLUME(x) ( (int)((x) * 61 )) 
 
 #define OUT_PERIOD_SIZE 880
 #define OUT_SHORT_PERIOD_COUNT 2
@@ -137,6 +145,18 @@ struct route_setting defaults[] = {
         .ctl_name = MIXER_SPEAKER_PLAYBACK_SWITCH,
         .intval = 1,
     },
+	{
+        .ctl_name = INTERNAL_SPEAKER_SWITCH,
+        .intval = 1,
+    },
+	{
+        .ctl_name = MIXER_SPEAKER_RIGHT,
+        .intval = 1,
+    },
+	{
+        .ctl_name = MIXER_SPEAKER_LEFT,
+        .intval = 1,
+    },
     {
         .ctl_name = MIXER_HEADSET_PLAYBACK_VOLUME,
         .intval = PERC_TO_HEADSET_VOLUME(1.0),
@@ -145,234 +165,34 @@ struct route_setting defaults[] = {
         .ctl_name = MIXER_HEADSET_PLAYBACK_SWITCH,
         .intval = 0,
     },
-    {
-        .ctl_name = "Mono Playback Volume",
+	{
+        .ctl_name = HEADPHONE_JACK_SWITCH,
         .intval = 0,
     },
     {
-        .ctl_name = "Mono Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "PhoneIn Playback Volume",
-        .intval = 0,
-    },
-    {
-        .ctl_name = MIXER_PCM_PLAYBACK_VOLUME,
+        .ctl_name = LINE_OUT_PLAYBACK_VOLUME,
         .intval = PERC_TO_PCM_VOLUME(1.0),
     },
-    {
-        .ctl_name = "PCM Playback Switch",
-        .intval = 1,
-    },
-    {
-        .ctl_name = "LineIn Capture Volume",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Mic 1 Capture Volume",
-        .intval = 31,
-    },
+	{
+		.ctl_name = LINE_OUT_PLAYBACK_SWITCH,
+		.intval = 0,
+	},
+	{
+		.ctl_name = LINE_OUT_SWITCH,
+		.intval = 0,
+	},
     {
         .ctl_name = MIXER_MIC_CAPTURE_VOLUME,
         .intval = PERC_TO_CAPTURE_VOLUME(1.0),
-    },
-    {
-        .ctl_name = "Mic 1 Boost Volume",
-        .intval = 2,
-    },
-    {
-        .ctl_name = "Mic 2 Boost Volume",
-        .intval = 2,
-    },
-    {
-        .ctl_name = "Speaker Amp Type",
-        .strval = "Class AB",
-    },
-    {
-        .ctl_name = "Rec Capture Volume",
-        .intval = 11,
-    },
-    {
-        .ctl_name = "EQ Mode",
-        .strval = "normal",
-    },
-    {
-        .ctl_name = "Right Record Mixer Mic1R Capture Switch",
-        .intval = 0,
     },
     {
         .ctl_name = MIXER_MIC_RIGHT_CAPTURE_SWITCH,
         .intval = 1,
     },
     {
-        .ctl_name = "Right Record Mixer LineInR Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right Record Mixer PhoneR Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right Record Mixer HPMixerR Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right Record Mixer SPKMixerR Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right Record Mixer MonoMixerR Capture Switc",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left Record Mixer Mic1L Capture Switch",
-        .intval = 0,
-    },
-    {
         .ctl_name = MIXER_MIC_LEFT_CAPTURE_SWITCH,
         .intval = 1,
-    },
-    {
-        .ctl_name = "Left Record Mixer LineInL Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left Record Mixer PhoneL Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left Record Mixer HPMixerL Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left Record Mixer SPKMixerL Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left Record Mixer MonoMixerL Capture Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Speaker Mixer LI2SPK Playback Switch",
-        .intval = 1,
-    },
-    {
-        .ctl_name = "Speaker Mixer PHO2SPK Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Speaker Mixer MIC12SPK Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Speaker Mixer MIC22SPK Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Speaker Mixer DAC2SPK Playback Switch",
-        .intval = 1,
-    },
-    {
-        .ctl_name = "Mono Mixer LI2MONO Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Mono Mixer MIC12MONO Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Mono Mixer MIC22MONO Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Mono Mixer DAC2MONO Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Mono Mixer ADC2MONO_L Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Mono Mixer ADC2MONO_R Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right HP Mixer LI2HPR Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right HP Mixer PHO2HPR Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right HP Mixer MIC12HPR Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right HP Mixer MIC22HPR Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right HP Mixer DAC2HPR Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Right HP Mixer ADCR2HPR Playback Switch",
-        .intval = 1,
-    },
-    {
-        .ctl_name = "Left HP Mixer LI2HPL Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left HP Mixer PHO2HPL Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left HP Mixer MIC12HPL Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left HP Mixer MIC22HPL Playback Switch",
-        .intval = 0,
-    },
-    {
-        .ctl_name = "Left HP Mixer DAC2HPL Playback Switch",
-        .intval = 1,
-    },
-    {
-        .ctl_name = "Left HP Mixer ADCL2HPL Playback Switch",
-        .intval = 1,
-    },
-    {
-        .ctl_name = "Right Headphone Out Mux",
-        .strval = "HPR Mixer",
-    },                  
-    {
-        .ctl_name = "Left Headphone Out Mux",
-        .strval = "HPL Mixer",
-    },                                     
-    {
-        .ctl_name = "Right Speaker Out Mux",
-        .strval = "HPR Mixer",
-    },                  
-    {
-        .ctl_name = "Left Speaker Out Mux",
-        .strval = "HPL Mixer",
-    },                                     
-    {
-        .ctl_name = "Mono Out Mux",
-        .strval = "VMID",
-    },                                   
-    {
-        .ctl_name = INTERNAL_SPEAKER_SWITCH,
-        .intval = 1,
-    },                           
-    {
-        .ctl_name = HEADPHONE_JACK_SWITCH,
-        .intval = 0,
-    },                           
+    },                          
     {
         .ctl_name = INTERNAL_MIC_SWITCH,
         .intval = 1,
@@ -400,6 +220,14 @@ struct route_setting headphone_route[] = {
         .ctl_name = MIXER_SPEAKER_PLAYBACK_SWITCH,
 		.intval = 0,
     },
+	{
+        .ctl_name = MIXER_SPEAKER_RIGHT,
+        .intval = 0,
+    },
+	{
+        .ctl_name = MIXER_SPEAKER_LEFT,
+        .intval = 0,
+    },
     {
         .ctl_name = NULL,
     }
@@ -423,38 +251,18 @@ struct route_setting speaker_route[] = {
         .ctl_name = MIXER_SPEAKER_PLAYBACK_SWITCH,
 		.intval = 1,
     },
+	{
+        .ctl_name = MIXER_SPEAKER_RIGHT,
+        .intval = 1,
+    },
+	{
+        .ctl_name = MIXER_SPEAKER_LEFT,
+        .intval = 1,
+    },
 	
 	{
         .ctl_name = MIXER_SPEAKER_PLAYBACK_VOLUME,
 		.intval = PERC_TO_SPEAKER_VOLUME(0.6),
-    },
-	{
-        .ctl_name = "Speaker Mixer DAC2SPK Playback Switch",
-        .intval = 1,
-    },
-	{
-        .ctl_name = "Right HP Mixer ADCR2HPR Playback Switch",
-        .intval = 1,
-    },
-	{
-        .ctl_name = "Left HP Mixer ADCL2HPL Playback Switch",
-        .intval = 1,
-    },
-	{
-        .ctl_name = "Right HP Mixer DAC2HPR Playback Switch",
-        .intval = 1,
-    },
-	{
-        .ctl_name = "Left HP Mixer DAC2HPL Playback Switch",
-        .intval = 1,
-    },
-	{
-        .ctl_name = "Right Speaker Out Mux",
-        .strval = "HPR Mixer",
-    },
-	{
-        .ctl_name = "Left Speaker Out Mux",
-        .strval = "HPL Mixer",
     },
     {
         .ctl_name = NULL,
@@ -478,6 +286,14 @@ struct route_setting speaker_headphone_route[] = {
     {
         .ctl_name = MIXER_SPEAKER_PLAYBACK_SWITCH,
 		.intval = 1,
+    },
+	{
+        .ctl_name = MIXER_SPEAKER_RIGHT,
+        .intval = 1,
+    },
+	{
+        .ctl_name = MIXER_SPEAKER_LEFT,
+        .intval = 1,
     },
     {
         .ctl_name = NULL,

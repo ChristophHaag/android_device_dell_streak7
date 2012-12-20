@@ -33,7 +33,8 @@
   <path name="hdmi">
     <ctl name="Speaker ZC Switch" value="0" />
     <ctl name="Speaker Switch" value="0" />
-    <ctl name="Speaker Mixer DAC2SPK Playback Switch" value="0" />
+    <ctl name="Right Speaker Mixer" value="0"/>
+  	<ctl name="Left Speaker Mixer" value="0"/>
   </path>
 
   <path name="main-mic-top">
