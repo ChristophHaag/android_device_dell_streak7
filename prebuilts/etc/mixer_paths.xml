@@ -8,6 +8,7 @@
   <ctl name="Internal Mic Switch" value="1" />
   <ctl name="Headphone ZC Switch" value="0" />
   <ctl name="Headphone Switch" value="0" />
+  <ctl name="Int Mic" value="1" />
   <ctl name="Left Input PGA Switch" value="0" />
   <ctl name="Right Input PGA Switch" value="0" />
   <ctl name="Digital Capture Volume" value="0" />
@@ -17,7 +18,7 @@
   	<ctl name="Right Speaker Mixer" value="1"/>
   	<ctl name="Left Speaker Mixer" value="1"/>
   	<ctl name="Speaker ZC Switch" value="1" />
-	<ctl name="Headphone ZC Switch" value="0" />
+	  <ctl name="Headphone ZC Switch" value="0" />
   	<ctl name="Headphone Switch" value="0" />
   </path>
 
@@ -39,18 +40,21 @@
 
   <path name="main-mic-top">
     <ctl name="Internal Mic Switch" value="1" />
+    <ctl name="Int Mic" value="1" />
     <ctl name="Right Input PGA Switch" value="0"/>
     <ctl name="Left Input PGA Switch" value="0"/>
   </path>
 
   <path name="main-mic-left">
     <ctl name="Internal Mic Switch" value="1" />
+    <ctl name="Int Mic" value="1" />
     <ctl name="Right Input PGA Switch" value="0"/>
     <ctl name="Left Input PGA Switch" value="0"/>
   </path>
 
   <path name="headset-mic">
     <ctl name="Mic Jack Switch" value="1" />
+    <ctl name="Int Mic" value="0" />
     <ctl name="Left Input PGA Volume" value="1" />
     <ctl name="Right Input PGA Volume" value="1" />
   </path>

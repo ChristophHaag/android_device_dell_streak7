@@ -57,7 +57,7 @@
 #define MIXER_SPEAKER_RIGHT					"Right Speaker Mixer"
 #define MIXER_SPEAKER_LEFT					"Left Speaker Mixer"
 
-#define INTERNAL_MIC_SWITCH					"Internal Mic Switch"
+#define INTERNAL_MIC_SWITCH					"Int Mic"
 
 /* ALSA card */
 #define CARD_SND 0
@@ -1571,9 +1571,9 @@ static int adev_open(const hw_module_t* module, const char* name,
 	}
 	
     adev->mixer_ctls.pcm_volume = mixer_get_ctl_by_name(adev->mixer,
-                                           MIXER_PCM_PLAYBACK_VOLUME);
+                                           LINE_OUT_PLAYBACK_VOLUME);
 	if (!adev->mixer_ctls.pcm_volume) { 
-		ALOGE("Unable to find '%s' mixer control",MIXER_PCM_PLAYBACK_VOLUME);
+		ALOGE("Unable to find '%s' mixer control",LINE_OUT_PLAYBACK_VOLUME);
 		goto error_out;
 	}
 										   
