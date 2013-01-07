@@ -37,27 +37,21 @@
 
 
 /* Mixer control names */
-#define LINE_OUT_PLAYBACK_VOLUME     		"Line Out Volume"
-#define LINE_OUT_PLAYBACK_SWITCH			"Line Out Switch"
-#define LINE_OUT_SWITCH			     		"Line Out ZC Switch"
+#define MIXER_PCM_PLAYBACK_VOLUME "Digital Playback Volume"
+#define MIXER_PCM_CAPTURE_VOLUME "Digital Capture Volume"
 
-#define MIXER_HEADSET_PLAYBACK_VOLUME       "Headphone Volume"
-#define MIXER_SPEAKER_PLAYBACK_VOLUME       "Speaker Volume"
+#define MIXER_SPEAKER_PLAYBACK_VOLUME "Line Out Volume"
+#define MIXER_SPEAKER_PLAYBACK_SWITCH "Speaker Switch"
 
-#define MIXER_MIC_CAPTURE_VOLUME            "Digital Capture Volume"
+#define MIXER_HEADSET_PLAYBACK_VOLUME "Headphone Volume"
+#define MIXER_HEADSET_PLAYBACK_SWITCH "Headphone Switch"
 
-#define MIXER_HEADSET_PLAYBACK_SWITCH       "Headphone Switch"
-#define MIXER_SPEAKER_PLAYBACK_SWITCH       "Speaker Switch"
-
-#define MIXER_MIC_LEFT_CAPTURE_SWITCH       "Left Input PGA Switch"
-#define MIXER_MIC_RIGHT_CAPTURE_SWITCH      "Right Input PGA Switch"
-
-#define HEADPHONE_JACK_SWITCH				"Headphone ZC Switch"
-#define INTERNAL_SPEAKER_SWITCH				"Int Spk"
-#define MIXER_SPEAKER_RIGHT					"Right Speaker Mixer"
-#define MIXER_SPEAKER_LEFT					"Left Speaker Mixer"
-
-#define INTERNAL_MIC_SWITCH					"Int Mic"
+#define MIXER_MICL_CAPTURE_VOLUME "Left Input PGA Volume"
+#define MIXER_MICR_CAPTURE_VOLUME "Right Input PGA Volume"
+#define MIXER_MICL_CAPTURE_SWITCH "Left Input PGA Switch"
+#define MIXER_MICR_CAPTURE_SWITCH "Right Input PGA Switch"
+#define MIXER_MICL_CAPTURE_MUX "Left Input Mux"
+#define MIXER_MICR_CAPTURE_MUX "Right Input Mux"
 
 /* ALSA card */
 #define CARD_SND 0
