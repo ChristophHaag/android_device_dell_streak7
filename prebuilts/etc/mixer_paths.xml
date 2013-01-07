@@ -1,60 +1,43 @@
 <mixer>
   <!-- These are the initial mixer settings -->
   <ctl name="Speaker Switch" value="1" />
-  <ctl name="Right Speaker Mixer" value="1"/>
-  <ctl name="Left Speaker Mixer" value="1"/>
-  <ctl name="Speaker ZC Switch" value="0" />
-  
-  <ctl name="Internal Mic Switch" value="1" />
-  <ctl name="Headphone ZC Switch" value="0" />
   <ctl name="Headphone Switch" value="0" />
-  <ctl name="Int Mic" value="1" />
-  <ctl name="Left Input PGA Switch" value="0" />
-  <ctl name="Right Input PGA Switch" value="0" />
-  <ctl name="Digital Capture Volume" value="0" />
+  <ctl name="Left Input PGA Switch" value="1" />
+  <ctl name="Right Input PGA Switch" value="1" />  
+  
+  <!-- This is are the volume levels -->
+  <ctl name="Digital Playback Volume" value="120" />
+  <ctl name="Digital Capture Volume" value="96" />
+  <ctl name="Line Out Volume" value="63" />
+  <ctl name="Headphone Volume" value="63" />
+  <ctl name="Left Input PGA Volume" value="31" />
+  <ctl name="Right Input PGA Volume" value="31" />
+
+  <!-- Muxes -->
+  <ctl name="Left Input Mux" value="Right" />
+  <ctl name="Right Input Mux" value="Right" />
 
   <path name="speaker">
     <ctl name="Speaker Switch" value="1" />
-  	<ctl name="Right Speaker Mixer" value="1"/>
-  	<ctl name="Left Speaker Mixer" value="1"/>
-  	<ctl name="Speaker ZC Switch" value="1" />
-	  <ctl name="Headphone ZC Switch" value="0" />
-  	<ctl name="Headphone Switch" value="0" />
+    <ctl name="Headphone Switch" value="0" />
   </path>
 
   <path name="headphone">
-  	<ctl name="Speaker ZC Switch" value="0" />
-	<ctl name="Right Speaker Mixer" value="0"/>
-  	<ctl name="Left Speaker Mixer" value="0"/>
-	<ctl name="Headphone ZC Switch" value="1" />
-  	<ctl name="Headphone Switch" value="1" />
-    
+   <ctl name="Speaker Switch" value="0" />
+   <ctl name="Headphone Switch" value="1" />
   </path>
   
-  <path name="hdmi">
-    <ctl name="Speaker ZC Switch" value="0" />
-    <ctl name="Speaker Switch" value="0" />
-    <ctl name="Right Speaker Mixer" value="0"/>
-  	<ctl name="Left Speaker Mixer" value="0"/>
-  </path>
-
   <path name="main-mic-top">
-    <ctl name="Internal Mic Switch" value="1" />
-    <ctl name="Int Mic" value="1" />
-    <ctl name="Right Input PGA Switch" value="0"/>
-    <ctl name="Left Input PGA Switch" value="0"/>
+    <ctl name="Right Input PGA Switch" value="1"/>
+    <ctl name="Left Input PGA Switch" value="1"/>
   </path>
 
   <path name="main-mic-left">
-    <ctl name="Internal Mic Switch" value="1" />
-    <ctl name="Int Mic" value="1" />
-    <ctl name="Right Input PGA Switch" value="0"/>
-    <ctl name="Left Input PGA Switch" value="0"/>
+    <ctl name="Left Input PGA Switch" value="1"/>
+    <ctl name="Right Input PGA Switch" value="1"/>
   </path>
 
   <path name="headset-mic">
-    <ctl name="Mic Jack Switch" value="1" />
-    <ctl name="Int Mic" value="0" />
     <ctl name="Left Input PGA Volume" value="1" />
     <ctl name="Right Input PGA Volume" value="1" />
   </path>
