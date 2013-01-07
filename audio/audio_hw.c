@@ -53,7 +53,7 @@
 #define MIXER_MIC_RIGHT_CAPTURE_SWITCH      "Right Input PGA Switch"
 
 #define HEADPHONE_JACK_SWITCH				"Headphone ZC Switch"
-#define INTERNAL_SPEAKER_SWITCH				"Speaker ZC Switch"
+#define INTERNAL_SPEAKER_SWITCH				"Int Spk"
 #define MIXER_SPEAKER_RIGHT					"Right Speaker Mixer"
 #define MIXER_SPEAKER_LEFT					"Left Speaker Mixer"
 
