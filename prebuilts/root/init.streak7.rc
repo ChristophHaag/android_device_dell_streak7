@@ -3,12 +3,24 @@ import init.streak7.usb.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0775 system system
-    symlink /mnt/sdcard /sdcard
-    export REMOVABLE_STORAGE /mnt/sdcard2
-    mkdir /mnt/sdcard2 0775 system system
-    symlink /mnt/sdcard2 /sdcard2
+    # for backwards compatibility
+    export EXTERNAL_STORAGE /storage/sdcard0
+
+    # create directory for mounting internal storage
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+
+    # create directory for mounting external sdcard
+    mkdir /storage/sdcard1 0000 system system
+    symlink /storage/sdcard1 /external_sd
+    symlink /storage/sdcard1 /mnt/external_sd
+
+    # create directory for mounting usb drives
+    mkdir /storage/usbdisk 0666 system system
+    symlink /storage/usbdisk /mnt/usbdisk
+    symlink /mnt/usbdisk /usbdisk
 
 on fs
 # Okpa, symbolic link named partitions

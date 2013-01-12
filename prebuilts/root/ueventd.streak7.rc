@@ -4,7 +4,6 @@
 /dev/tegra_rpc          0666    media   media
 /dev/tegra_sema         0666    media   media
 /dev/tegra_mediaserver  0666    media   media
-/dev/tegra_dc*   	0777	system	system
 /dev/sh532u             0660    media   camera
 /dev/ssl3250a           0660    media   camera
 /dev/tegra_camera       0660    media   camera
@@ -29,4 +28,5 @@
 /dev/wm8903             0666    system	audio
 /dev/dsp_fm34	        0666	system	audio
 /dev/rfkill             0660    wifi    wifi
-
+/dev/tegra_dc*   	0660	system	system
+/dev/bma150             0660    system  system

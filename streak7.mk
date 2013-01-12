@@ -2,12 +2,12 @@
 
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-
+PRODUCT_RELEASE_NAME := Streak7
 PRODUCT_NAME := streak7
 PRODUCT_DEVICE := streak7
-PRODUCT_MODEL := Dell Streak 7
+PRODUCT_MODEL := Streak 7
 PRODUCT_MANUFACTURER := Dell Inc.
-PRODUCT_BRAND := dell
+PRODUCT_BRAND := Dell
 
 PRODUCT_LOCALES += en_US
 
@@ -63,28 +63,34 @@ PRODUCT_PACKAGES += \
     lights.tegra \
     camera.tegra \
     com.android.future.usb.accessory \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.primary.tegra \
-    setup_fs \
     libinvensense_mpl \
-    libaudioutils \
-    make_ext4fs \
     drmserver \
     librs_jni \
     libdrmframework_jni
 
+#File System
 PRODUCT_PACKAGES += \
-    liba2dp \
-    libasound \
-    tinyalsa \
+    setup_fs \
+    make_ext4fs \
+
+PRODUCT_PACKAGES += \
     libpkip \
-    tinyplay \
-    tinycap \
-    tinymix \
     CMFileManager \
     libnetcmdiface \
     wmiconfig
+
+#Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.primary.tegra \
+    libaudioutils \
+    liba2dp \
+    libasound \
+    libtinyalsa \
+    tinyplay \
+    tinycap \
+    tinymix 
 
 include frameworks/native/build/tablet-dalvik-heap.mk
 

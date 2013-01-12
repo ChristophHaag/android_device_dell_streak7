@@ -1,6 +1,7 @@
 #Board Information
 TARGET_BOARD_INFO_FILE := device/dell/streak7/board-info.txt
 BOARD_EGL_CFG := vendor/dell/streak7/proprietary/lib/egl/egl.cfg
+BOARD_EGL_NEEDS_LEGACY_FB := true
 
 TARGET_BOARD_PLATFORM := tegra
 TARGET_TEGRA_VERSION := t20
@@ -86,5 +87,5 @@ SMALLER_FONT_FOOTPRINT := true
 #Expiermental stuff
 BOARD_USES_SECURE_SERVICES := true
 BOARD_USES_OVERLAY := true
-USE_CAMERA_STUB := true
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+USE_CAMERA_STUB := false
+#COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
