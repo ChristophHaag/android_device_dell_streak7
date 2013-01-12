@@ -31,7 +31,11 @@ on fs
     mount ext4 /dev/CAC /cache wait noatime nosuid nodev
     mount ext4 /dev/UDA /data wait noatime nosuid nodev
 
-    #mount vfat /dev/block/mmcblk3p14 /mnt/sdcard
+    mount vfat /dev/block/mmcblk3p14 /data wait ro
+
+on post-fs
+    # Keep rootfs rw since FUSE needs dir creation
+    mount rootfs rootfs / rw remount
        
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -182,9 +186,8 @@ on property:init.svc.wpa_supplicant=stopped
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # deamon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media wil be created with user and group media_rw (1023)
-# WH Lee, Use external SD card
-#service sdcard /system/bin/sdcard /data/media 1023 1023
-#    class late_start
+    service sdcard /system/bin/sdcard /data/media 1023 1023
+    class late_start
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
 service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugreport
@@ -235,3 +238,5 @@ on property:tf.enable=y
     mkdir /data/tf
     start tf_daemon
 
+on property:init.svc.vold=running
+    start sdcard 

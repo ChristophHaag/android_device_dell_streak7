@@ -30,7 +30,7 @@ lib/libardrv_dynamic.so
 lib/libnvddk_2d_v2.so
 lib/liba2dp.so
 lib/libaudio.so
-lib/libcamera.so
+lib/libasound.so
 lib/libcgdrv.so
 lib/libnvmm.so
 lib/libnvddk_2d.so
@@ -95,7 +95,6 @@ etc/firmware/nvmm_wmaprodec.axf
 etc/firmware/nvrm_avp.bin
 etc/firmware/bcm4329.hcd
 etc/nvram.txt
-etc/asound.conf 
 usr/share/alsa/alsa.conf 
 usr/share/alsa/cards/aliases.conf 
 usr/share/alsa/pcm/rear.conf 
@@ -133,5 +132,6 @@ bin/glgps
 etc/gps.conf
 etc/gpsconfig.xml
 bin/sensors_daemon
+lib/libaudioservice.so
 
 

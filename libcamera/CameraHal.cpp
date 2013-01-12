@@ -34,7 +34,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_major: 1,
          version_minor: 0,
          id:            CAMERA_HARDWARE_MODULE_ID,
-         name:          "Streak7 Camera Module",
+         name:          "Camera Module",
          author:        "The Android Open Source Project",
          methods:       &android::CameraFactory::mCameraModuleMethods,
          dso:           NULL,

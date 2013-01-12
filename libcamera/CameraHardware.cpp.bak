@@ -105,8 +105,62 @@ extern "C" {
 #define PIXEL_FORMAT_YV16  0x36315659 /* YCrCb 4:2:2 Planar */
 #endif
 
+// File to control camera power
+#define CAMERA_POWER	    "/sys/devices/platform/shuttle-pm-camera/power_on"
 
 namespace android {
+
+bool CameraHardware::PowerOn()
+{
+	ALOGD("CameraHardware::PowerOn: Power ON camera.");
+	
+	// power on camera
+	int handle = ::open(CAMERA_POWER,O_RDWR);
+	if (handle >= 0) {
+		::write(handle,"1\n",2);
+		::close(handle);
+	} else {
+		ALOGE("Could not open %s for writing.", CAMERA_POWER);
+		return false;
+    } 
+	
+	// Wait until the camera is recognized or timed out
+	int timeOut = 500;
+	do {
+		// Try to open the video capture device
+		handle = ::open(VIDEO_DEVICE,O_RDWR);
+		if (handle >= 0)
+			break;
+		// Wait a bit
+		::usleep(10000);
+	} while (--timeOut > 0);
+	
+	if (handle >= 0) {
+		ALOGD("Camera powered on");
+		::close(handle);
+		return true;
+	} else {
+		ALOGE("Unable to power camera");
+	}
+	
+	return false;
+}
+
+bool CameraHardware::PowerOff()
+{
+	ALOGD("CameraHardware::PowerOff: Power OFF camera.");
+	
+	// power on camera
+	int handle = ::open(CAMERA_POWER,O_RDWR);
+	if (handle >= 0) {
+		::write(handle,"0\n",2);
+		::close(handle);
+	} else {
+		ALOGE("Could not open %s for writing.", CAMERA_POWER);
+		return false;
+    } 
+	return true;
+}
 
 CameraHardware::CameraHardware(const hw_module_t* module)
         :
@@ -164,6 +218,9 @@ CameraHardware::CameraHardware(const hw_module_t* module)
     ops = &mDeviceOps;
     priv = this;
 
+	// Power on camera
+	PowerOn();
+
 	// Init default parameters
     initDefaultParameters();
 }
@@ -201,6 +258,8 @@ CameraHardware::~CameraHardware()
 		mJpegPictureHeap = NULL;
 	}
 	
+	// Power off camera
+	PowerOff();
 }
 
 bool CameraHardware::NegotiatePreviewFormat(struct preview_stream_ops* win)
