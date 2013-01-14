@@ -6,6 +6,9 @@
   <ctl name="Left Input PGA Switch" value="1" />
   <ctl name="Right Input PGA Switch" value="1" />  
   
+  <ctl name="DACL Switch" value="1" />
+  <ctl name="DACR Switch" value="1" />
+  
   <!-- This is are the volume levels -->
   <ctl name="Digital Playback Volume" value="120" />
   <ctl name="Digital Capture Volume" value="96" />
@@ -29,6 +32,7 @@
    <ctl name="Speaker ZC Switch" value="0" />
    <ctl name="Headphone ZC Switch" value="1" />
    <ctl name="Headphone Switch" value="1" />
+   <ctl name="Headphone" value="1" />
   </path>
   
   <path name="main-mic-top">
