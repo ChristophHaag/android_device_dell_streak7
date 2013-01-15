@@ -1,8 +1,7 @@
 <mixer>
   <!-- These are the initial mixer settings -->
-  <ctl name="Speaker Switch" value="1" />
-  <ctl name="Speaker ZC Switch" value="1" />
-  <ctl name="Headphone Switch" value="0" />
+  <ctl name="Int Spk" value="1" />
+  <ctl name="Headphone" value="0" />
   <ctl name="Left Input PGA Switch" value="1" />
   <ctl name="Right Input PGA Switch" value="1" />  
   
@@ -22,17 +21,13 @@
   <ctl name="Right Input Mux" value="Right" />
 
   <path name="speaker">
-    <ctl name="Speaker Switch" value="1" />
-    <ctl name="Speaker ZC Switch" value="1" />
-    <ctl name="Headphone Switch" value="0" />
+    <ctl name="Int Spk" value="1" />
+    <ctl name="Headphone" value="0" />
   </path>
 
   <path name="headphone">
-   <ctl name="Speaker Switch" value="0" />
-   <ctl name="Speaker ZC Switch" value="0" />
-   <ctl name="Headphone ZC Switch" value="1" />
-   <ctl name="Headphone Switch" value="1" />
    <ctl name="Headphone" value="1" />
+   <ctl name="Int Spk" value="0" />
   </path>
   
   <path name="main-mic-top">
