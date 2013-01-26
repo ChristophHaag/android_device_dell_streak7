@@ -39,7 +39,7 @@ $(call inherit-product, device/dell/streak7/streak7.mk)
 $(call inherit-product-if-exists, vendor/dell/streak7/streak7-vendor.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcm4329/Android.mk)
 
-PRODUCT_NAME := full_streak7
+PRODUCT_NAME := cm_streak7
 PRODUCT_DEVICE := streak7
 PRODUCT_BRAND := Dell
 PRODUCT_MODEL := Streak 7
