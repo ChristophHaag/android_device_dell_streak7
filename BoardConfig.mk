@@ -23,9 +23,7 @@ BOARD_PAGE_SIZE := 0x00000800
 
 # Audio hack for streak7
 BOARD_USES_GENERIC_AUDIO := true
-#TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USES_AUDIO_LEGACY := false
-ICS_AUDIO_BLOB := true
 
 #Storage Information
 TARGET_USERIMAGES_USE_EXT4 := true
