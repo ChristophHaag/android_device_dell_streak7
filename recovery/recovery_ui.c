@@ -27,14 +27,19 @@ int device_toggle_display(volatile char* key_pressed, int key_code) {
 int device_handle_key(int key_code, int visible) {
     if (visible) {
         switch (key_code) {
+            case KEY_HOME:
             case KEY_VOLUMEDOWN:
                 return HIGHLIGHT_DOWN;
 
+            case KEY_MENU:
             case KEY_VOLUMEUP:
                 return HIGHLIGHT_UP;
 
             case KEY_POWER:
                     return SELECT_ITEM;
+
+            case KEY_BACK:
+                    return GO_BACK;
         }
     }
 
