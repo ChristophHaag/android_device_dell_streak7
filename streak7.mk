@@ -1,24 +1,8 @@
 # Dell Streak 7 Make File
 
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-PRODUCT_RELEASE_NAME := Streak7
-PRODUCT_NAME := streak7
-PRODUCT_DEVICE := streak7
-PRODUCT_MODEL := Streak 7
-PRODUCT_MANUFACTURER := Dell Inc.
-PRODUCT_BRAND := Dell
-
-PRODUCT_LOCALES += en_US
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 480
 TARGET_SCREEN_WIDTH := 800
-
-$(call inherit-product, vendor/dell/streak7/streak7-vendor.mk)
-$(call inherit-product, build/target/product/languages_full.mk)
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcm4329/Android.mk)
 
 PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
@@ -92,13 +76,10 @@ PRODUCT_PACKAGES += \
     tinycap \
     tinymix 
 
-include frameworks/native/build/tablet-dalvik-heap.mk
-
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
-
-
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
