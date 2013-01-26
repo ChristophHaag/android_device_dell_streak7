@@ -87,3 +87,6 @@ BOARD_USES_SECURE_SERVICES := true
 BOARD_USES_OVERLAY := true
 USE_CAMERA_STUB := false
 #COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+
+# custom recovery ui
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/dell/streak7/recovery/recovery_ui.c
