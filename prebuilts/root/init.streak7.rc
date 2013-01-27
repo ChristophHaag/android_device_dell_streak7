@@ -261,3 +261,7 @@ service setup_fs /system/bin/setup_fs \
     user root
     group root
     oneshot
+
+# stop ril-daemon if this is a wifi-only device
+on property:ro.carrier=wifi-only
+    stop ril-daemon
