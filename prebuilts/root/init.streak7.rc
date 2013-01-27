@@ -3,28 +3,40 @@ import init.streak7.usb.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
-    # for backwards compatibility
-    export EXTERNAL_STORAGE /storage/sdcard0
+on init
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
 
-    # create directory for mounting internal storage
-    mkdir /storage 0050 system sdcard_r
-    mkdir /storage/sdcard0 0000 system system
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
     # create directory for mounting external sdcard
-    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/sdcard1 0666 system system
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
 
     # create directory for mounting usb drives
     mkdir /storage/usbdisk 0666 system system
     symlink /storage/usbdisk /mnt/usbdisk
-    symlink /mnt/usbdisk /usbdisk
+    symlink /storage/usbdisk /usbdisk
+
+on early-boot
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
 
 on fs
-# Okpa, symbolic link named partitions
+    # Okpa, symbolic link named partitions
     exec /sbin/ln_named_part mmcblk3 /dev
+    setprop ro.crypto.umount_sd false
+    mount_all /fstab.streak7
     
 # misc setting
     symlink /dev/block/mmcblk3p12 /dev/general_setting
@@ -37,28 +49,21 @@ on fs
     chown root system /dev/MSC
     chmod 0660 /dev/MSC
     
-    mount ext4 /dev/APP /system wait ro
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    exec /system/bin/do_fsck
-    mount ext4 /dev/CAC /cache wait noatime nosuid nodev
-    mount ext4 /dev/UDA /data wait noatime nosuid nodev
 
-    mount vfat /dev/block/mmcblk3p14 /data wait ro
-
-on post-fs
-    # Keep rootfs rw since FUSE needs dir creation
-    mount rootfs rootfs / rw remount
-       
 on post-fs-data
+
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     mkdir /data/misc/pmlog 0770
     chown dhcp dhcp /data/misc/dhcp
 
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    # we will remap this as /storage/emulated with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
+
+    # change back to bluetooth from system
+    chown bluetooth bluetooth /data/misc/bluetooth
 
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
@@ -195,10 +200,8 @@ service iprenew_eth0 /system/bin/dhcpcd -n
 on property:init.svc.wpa_supplicant=stopped
  stop dhcpcd_wlan0
 
-# create virtual SD card at /storage/sdcard0, based on the /data/media directory
-# deamon will drop to user/group system/media_rw after initializing
-# underlying files in /data/media wil be created with user and group media_rw (1023)
-service sdcard /system/bin/sdcard /data/media 1023 1023
+# virtual sdcard daemon running as media_rw (1023)
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
     class late_start
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
@@ -250,5 +253,11 @@ on property:tf.enable=y
     mkdir /data/tf
     start tf_daemon
 
-on property:init.svc.vold=running
-    start sdcard 
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs \
+        /dev/block/platform/sdhci-tegra.3/by-name/UDA \
+        /dev/block/platform/sdhci-tegra.3/by-name/CAC
+    class core
+    user root
+    group root
+    oneshot
