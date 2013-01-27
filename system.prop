@@ -1,6 +1,5 @@
 ro.carrier=wifi-only
 ro.opengles.version=131072
-mobiledata.interfaces=wlan0
 wifi.interface=wlan0
 keyguard.no_require_sim=true
 hwui.render_dirty_regions=false
@@ -9,5 +8,7 @@ debug.performance.tuning=1
 video.accelerate.hw=1
 debug.sf.hw=1
 sys.usb.config=mtp,adb
+rild.libpath=/system/lib/libhuaweigeneric-ril.so
+rild.libargs=-d /dev/ttyUSB3
 #ro.emmc.sdcard.partition=14
 #persist.fuse_sdcard=false

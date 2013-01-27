@@ -23,9 +23,7 @@ BOARD_PAGE_SIZE := 0x00000800
 
 # Audio hack for streak7
 BOARD_USES_GENERIC_AUDIO := true
-#TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USES_AUDIO_LEGACY := false
-ICS_AUDIO_BLOB := true
 
 #Storage Information
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -89,3 +87,6 @@ BOARD_USES_SECURE_SERVICES := true
 BOARD_USES_OVERLAY := true
 USE_CAMERA_STUB := false
 #COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+
+# custom recovery ui
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/dell/streak7/recovery/recovery_ui.c

@@ -1,34 +1,17 @@
 # Dell Streak 7 Make File
 
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-PRODUCT_RELEASE_NAME := Streak7
-PRODUCT_NAME := streak7
-PRODUCT_DEVICE := streak7
-PRODUCT_MODEL := Streak 7
-PRODUCT_MANUFACTURER := Dell Inc.
-PRODUCT_BRAND := Dell
-
-PRODUCT_LOCALES += en_US
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 480
 TARGET_SCREEN_WIDTH := 800
 
-$(call inherit-product, vendor/dell/streak7/streak7-vendor.mk)
-$(call inherit-product, build/target/product/languages_full.mk)
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcm4329/Android.mk)
-
 PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/files/liba2dp.so:obj/lib/liba2dp.so \
-$(LOCAL_PATH)/files/libaudio.so:obj/lib/libaudio.so \
 hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/nvram.txt:system/etc/wifi/nvram.txt \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.rc:root/init.streak7.rc \
+    $(LOCAL_PATH)/prebuilts/root/fstab.streak7:root/fstab.streak7 \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.usb.rc:root/init.streak7.usb.rc \
     $(LOCAL_PATH)/prebuilts/root/ueventd.streak7.rc:root/ueventd.streak7.rc \
     $(LOCAL_PATH)/prebuilts/root/sbin/ln_named_part:root/sbin/ln_named_part \
@@ -55,7 +38,6 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/usr/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
   $(LOCAL_PATH)/prebuilts/etc/audio_policy.conf:system/etc/audio_policy.conf \
   $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-  $(LOCAL_PATH)/prebuilts/etc/asound.conf:system/etc/asound.conf \
   $(LOCAL_PATH)/prebuilts/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
     
@@ -90,9 +72,9 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     tinyplay \
     tinycap \
-    tinymix 
-
-include frameworks/native/build/tablet-dalvik-heap.mk
+    tinymix \
+    rild \
+    libhuaweigeneric-ril
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -100,5 +82,4 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
-
-
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)

@@ -1,37 +1,35 @@
 <mixer>
   <!-- These are the initial mixer settings -->
-  <ctl name="Int Spk" value="1" />
-  <ctl name="Headphone" value="0" />
   <ctl name="Left Input PGA Switch" value="1" />
-  <ctl name="Right Input PGA Switch" value="1" />  
-  
-  <ctl name="DACL Switch" value="1" />
-  <ctl name="DACR Switch" value="1" />
-  
+  <ctl name="Right Input PGA Switch" value="1" />
+
+  <ctl name="Left Output Mixer DACL Switch" value="1" />
+  <ctl name="Right Output Mixer DACR Switch" value="1" />
+
+  <ctl name="Right Speaker Mixer DACR Switch" value="1" />
+  <ctl name="Left Speaker Mixer DACL Switch" value="1" />
+
   <!-- This is are the volume levels -->
   <ctl name="Digital Playback Volume" value="120" />
   <ctl name="Digital Capture Volume" value="96" />
-  <ctl name="Line Out Volume" value="63" />
-  <ctl name="Headphone Volume" value="63" />
-  <ctl name="Left Input PGA Volume" value="31" />
-  <ctl name="Right Input PGA Volume" value="31" />
 
   <!-- Muxes -->
-  <ctl name="Left Input Mux" value="Right" />
-  <ctl name="Right Input Mux" value="Right" />
+  <ctl name="Left Input Mux" value="IN2L" />
+  <ctl name="Right Input Mux" value="IN2R" />
 
   <path name="speaker">
-    <ctl name="Int Spk" value="1" />
-    <ctl name="Headphone" value="0" />
+    <ctl name="Speaker Switch" value="1" />
+    <ctl name="Headphone Switch" value="0" />
+    <ctl name="Pcm Playback Route" value="4" />
   </path>
 
   <path name="headphone">
-   <ctl name="Headphone" value="1" />
-   <ctl name="Int Spk" value="0" />
+   <ctl name="Speaker Switch" value="0" />
+   <ctl name="Headphone Switch" value="1" />
+   <ctl name="Pcm Playback Route" value="2" />
   </path>
-  
+
   <path name="main-mic-top">
-    <ctl name="Right Input PGA Switch" value="1"/>
     <ctl name="Left Input PGA Switch" value="1"/>
   </path>
 
