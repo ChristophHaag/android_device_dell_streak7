@@ -72,7 +72,9 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     tinyplay \
     tinycap \
-    tinymix 
+    tinymix \
+    rild \
+    libhuaweigeneric-ril
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
