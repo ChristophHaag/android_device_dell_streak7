@@ -9,6 +9,6 @@ video.accelerate.hw=1
 debug.sf.hw=1
 sys.usb.config=mtp,adb
 rild.libpath=/system/lib/libhuaweigeneric-ril.so
-rild.libargs=-d /dev/ttyUSB2
+rild.libargs=-d /dev/ttyUSB3
 #ro.emmc.sdcard.partition=14
 #persist.fuse_sdcard=false
