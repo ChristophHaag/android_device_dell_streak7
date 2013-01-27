@@ -1,5 +1,9 @@
 <mixer>
   <!-- These are the initial mixer settings -->
+  <ctl name="Speaker Switch" value="1" />
+  <ctl name="Headphone Switch" value="0" />
+  <ctl name="Pcm Playback Route" value="4" />
+
   <ctl name="Left Input PGA Switch" value="1" />
   <ctl name="Right Input PGA Switch" value="1" />
 
