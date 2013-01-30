@@ -58,16 +58,18 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/dell/streak7/bluetooth
 
 # Wifi related defines
+WIFI_BAND := 802_11_ABG
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 BOARD_WLAN_DEVICE := bcm4329
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_STA_PATH     := "/system/vendor/firmware/fw_bcm4329_abg.bin"
-WIFI_DRIVER_FW_AP_PATH      := "/system/vendor/firmware/fw_bcm4329_apsta.bin"
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
+WIFI_DRIVER_FW_STA_PATH     := "/system/etc/wifi/fw_bcm4329_abg.bin"
+WIFI_DRIVER_FW_AP_PATH      := "/system/etc/wifi/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_NAME     :=  "dhd"
-WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/system/vendor/firmware/fw_bcm4329_abg.bin nvram_path=/system/etc/wifi/nvram.txt iface_name=wlan0"
-WIFI_BAND := 802_11_ABG
+WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/system/etc/wifi/fw_bcm4329_abg.bin nvram_path=/system/etc/wifi/nvram.txt iface_name=wlan0"
+
 
 # GPS
 BOARD_HAVE_GPS_BCM := true
