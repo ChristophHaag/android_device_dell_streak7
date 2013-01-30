@@ -6,7 +6,7 @@
 /cache          ext4            /dev/block/platform/sdhci-tegra.3/by-num/p4
 /misc           emmc            /dev/block/platform/sdhci-tegra.3/by-num/p5
 /staging        emmc            /dev/block/platform/sdhci-tegra.3/by-num/p6
-/data           ext4            /dev/block/platform/sdhci-tegra.3/by-num/p13	length=-32768
+/data           ext4            /dev/block/platform/sdhci-tegra.3/by-num/p7	length=-32768
 /sdcard		vfat		/dev/block/platform/sdhci-tegra.3/by-num/p14
 /external_sd	vfat		/dev/block/platform/sdhci-tegra.2/mmcblk2p1
 
