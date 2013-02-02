@@ -30,7 +30,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 5388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 6042880
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 274435456
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 474435456
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 107374824
 BOARD_FLASH_BLOCK_SIZE := 131072
 
@@ -58,18 +58,16 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/dell/streak7/bluetooth
 
 # Wifi related defines
-WIFI_BAND := 802_11_ABG
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 BOARD_WLAN_DEVICE := bcm4329
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
-WIFI_DRIVER_FW_STA_PATH     := "/system/etc/wifi/fw_bcm4329_abg.bin"
-WIFI_DRIVER_FW_AP_PATH      := "/system/etc/wifi/fw_bcm4329_apsta.bin"
+WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/fw_bcm4329_abg.bin"
+WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_NAME     :=  "dhd"
-WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/system/etc/wifi/fw_bcm4329_abg.bin nvram_path=/system/etc/wifi/nvram.txt iface_name=wlan0"
-
+WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/vendor/firmware/fw_bcm4329_abg.bin nvram_path=/system/etc/wifi/nvram.txt iface_name=wlan0"
+WIFI_BAND := 802_11_ABG
 
 # GPS
 BOARD_HAVE_GPS_BCM := true
@@ -92,3 +90,16 @@ USE_CAMERA_STUB := false
 
 # custom recovery ui
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/dell/streak7/recovery/recovery_ui.c
+
+#TWRP Stuff
+DEVICE_RESOLUTION := 800x480
+TW_NO_USB_STORAGE := true
+TW_FLASH_FROM_STORAGE := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_NO_REBOOT_RECOVERY := true
+TW_DEFAULT_EXTERNAL_STORAGE := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
