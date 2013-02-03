@@ -177,7 +177,7 @@
     <integer name="config_downloadDataDirSize">200</integer>
 
 <!-- Separate software navigation bar required on this device. -->
-	<bool name="config_showNavigationBar">true</bool>   
+	<bool name="config_showNavigationBar">false</bool>
  <!-- When the free space available in DownloadManager's data dir falls
          below the percentage value specified by this param, DownloadManager
          starts removing files to try to make percentage of available
