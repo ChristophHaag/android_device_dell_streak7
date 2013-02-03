@@ -39,9 +39,6 @@
     </string-array>
     <bool name="config_sf_slowBlur">true</bool>
     <string name="config_datause_iface">wlan0</string>
-       <!-- Boolean indicating whether the wifi chipset has background scan support -->
-   <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
-    
 
     <!-- This array should be overridden by the device to present a list of radio
          attributes. This is used by the connectivity manager to decide which networks
@@ -63,6 +60,13 @@
    </integer-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
+         should be empty.  An example would be "softap.*" -->
+    <string-array translatable="false" name="config_tether_wifi_regexs">
+        <item>"wlan0"</item>
+    </string-array>
+
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
     Bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
     should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
@@ -70,7 +74,7 @@
     </string-array>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support"false</bool>
+    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
@@ -182,9 +186,6 @@
     <integer name="config_cursorWindowSize">2048</integer>
 
     <bool name="config_allowAllRotations">true</bool>
-    
-        <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">3</integer>
     
     <string-array name="config_locationProviderPackageNames" translatable="false">
 	<item>com.android.location.fused</item>
