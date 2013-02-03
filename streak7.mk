@@ -37,6 +37,10 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/prebuilts/etc/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
   $(LOCAL_PATH)/prebuilts/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
   $(LOCAL_PATH)/prebuilts/usr/panjit_touch.idc:system/usr/idc/panjit_touch.idc 
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
     
 PRODUCT_PACKAGES += \
     lights.tegra \
