@@ -5,9 +5,6 @@ TARGET_SCREEN_HEIGHT := 480
 TARGET_SCREEN_WIDTH := 800
 
 PRODUCT_COPY_FILES += \
-hardware/broadcom/wlan/bcm4329/firmware/fw_bcm4329_abg.bin:system/vendor/firmware/fw_bcm4329_abg.bin
-
-PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/nvram.txt:system/etc/wifi/nvram.txt \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.rc:root/init.streak7.rc \
@@ -75,6 +72,11 @@ PRODUCT_PACKAGES += \
     tinymix \
     rild \
     libhuaweigeneric-ril
+
+#Wifi
+PRODUCT_PACKAGES += \
+    fw_bcm4329.bin \
+    fw_bcm4329_apsta.bin
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
