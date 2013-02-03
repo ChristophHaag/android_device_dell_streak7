@@ -231,6 +231,7 @@ service sensors_daemon /system/bin/sensors_daemon
 # WH Lee
 # Start GPS daemon
 service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gpsconfig.xml
+    socket gps seqpacket 0660 gps system
     user gps
     group system
     class late_start
