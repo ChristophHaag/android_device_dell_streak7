@@ -1,73 +1,59 @@
 # bcm94329sdagb board
 # $Copyright (C) 2008 Broadcom Corporation$
 # $id$
+# Azurewave Release 2010/08/19
+# NH620A
 
 sromrev=3
 vendid=0x14e4
 devid=0x432f
-boardtype=0x050c
-;boardtype=0x04b9
-boardrev=0x32
+boardtype=0x57e
 
+# board revision 1.1
+boardrev=0x11
+
+# boardflags
 boardflags=0x200
+boardflags2=0x00400000
 
-# Specify the xtalfreq if it is otherthan 38.4MHz
 xtalfreq=37400
 
 aa2g=1
-aa5g=0
 
-ag0=255
+ag0=0x0
+ag1=0x0
 
 # 11g paparams
-pa0b0=7160
-pa0b1=-1720
-pa0b2=-341
-
-;pa0b0=6309
-;pa0b1=-1660
-;pa0b2=-342
-
-;pa0b0=7180
-;pa0b1=-1743
-;pa0b2=-341
-
-;pa0b0=0x16C2
-;pa0b1=0xfaa0
-;pa0b2=0xfea3
-
-;pa0b0=6960
-;pa0b1=-1686
-;pa0b2=-341
-
-;pa0b0=6003
-;pa0b1=64086
-;pa0b2=65195
+pa0b0=0x13df
+pa0b1=0xfac0
+pa0b2=0xfe6d
 pa0itssit=62
-pa0maxpwr=68
-opo=0
-mcs2gpo0=0x6666
-mcs2gpo1=0x6666
+pa0maxpwr=74
+ofdmpo=0x44444444
+mcs2gpo0=0x8888
+mcs2gpo1=0x8888
+
+# sel = 1 : 20% evm  sel = 2 : 27% evm  sel = 3 : 16% evm
+cckdigfilttype=2
+#ofdmdigfilttype=1
 
 # 11g rssi params
-rssismf2g=0xa
-rssismc2g=0xb
-rssisav2g=0x3
+rssismf2g=0xa,0xa,0xa
+rssismc2g=0xb,0xb,0xa
+rssisav2g=0x3,0x3,0x3
 bxa2g=0
 
 # country code
 ccode=ALL
 cctl=0x0
-cckdigfilttype=1
-ofdmdigfilttype=3
 
 rxpo2g=0
 
-boardnum=1
-macaddr=00:90:4c:c5:00:34
-
-#######
+#macaddr=00:11:22:33:44:55
 nocrc=1
+#nvram_override=1
+#sd_gpout=0
+#sd_oobonly=1
 
 #for mfgc
 otpimagesize=182
@@ -80,4 +66,3 @@ hwhdr=0x05ffff031030031003100000
 
 #This includes the standard FUNCID and FUNCE tuples in the F1, F2, F3 and common CIS.
 RAW1=80 32 fe 21 02 0c 00 22 2a 01 01 00 00 c5 0 e6 00 00 00 00 00 40 00 00 ff ff 80 00 00 00 00 00 00 00 00 00 00 c8 00 00 00 00 00 00 00 00 00 00 00 00 00 ff 20 04 D0 2 29 43 21 02 0c 00 22 04 00 20 00 5A
-
