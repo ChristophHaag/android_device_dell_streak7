@@ -3,7 +3,7 @@
 
 <hal
     acPortName="/dev/ttyHS3"
-    acLogDirectory="/data/gps/log"
+    acLogDirectory="/data/broadcom/log"
     lBaudRate="115200"
     cLogEnabled="false"
     acNmeaOutName="/cache/nmea"
