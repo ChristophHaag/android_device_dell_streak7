@@ -34,7 +34,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 474435456
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 107374824
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-BOARD_DATA_DEVICE := /dev/block/mmcblk0p14
+BOARD_DATA_DEVICE := /dev/block/mmcblk0p7
 BOARD_DATA_FILESYSTEM := ext4
 BOARD_CACHE_DEVICE := /dev/block/mmcblk04
 BOARD_CACHE_FILESYSTEM := ext4
@@ -63,10 +63,10 @@ BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 BOARD_WLAN_DEVICE := bcm4329
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/fw_bcm4329_abg.bin"
+WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_NAME     :=  "dhd"
-WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/vendor/firmware/fw_bcm4329_abg.bin nvram_path=/system/etc/wifi/nvram.txt iface_name=wlan0"
+WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/system/etc/wifi/nvram.txt iface_name=wlan0"
 WIFI_BAND := 802_11_ABG
 
 # GPS

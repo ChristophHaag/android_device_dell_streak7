@@ -152,8 +152,13 @@ on boot
     write /sys/class/gpio/export 123
     write /sys/class/gpio/gpio123/value 0
     write /sys/class/gpio/gpio123/direction out
-    chown root system /sys/class/gpio/gpio123/value
+    chown gps system /sys/class/gpio/gpio123/value
     chmod 0664 /sys/class/gpio/gpio123/value
+    mkdir /data/gps
+    chown gps system /data/gps
+    chmod 770 /data/gps
+    chown gps system /dev/ttyHS3
+    chmod 0660 /dev/ttyHS3
 
 # Shower enable for backlight test
 chown system /sys/class/gpio/gpio143/value
@@ -225,10 +230,11 @@ service sensors_daemon /system/bin/sensors_daemon
 
 # WH Lee
 # Start GPS daemon
-service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gps/gpsconfig.xml
+service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gpsconfig.xml
+    socket gps seqpacket 0660 gps system
+    user gps
+    group system
     class late_start
-    user root
-    group root
 
 # Shuli, logfilter init
 service lfinit /system/bin/lfinit
