@@ -90,6 +90,7 @@ USE_CAMERA_STUB := false
 
 # custom recovery ui
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/dell/streak7/recovery/recovery_ui.c
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 #TWRP Stuff
 DEVICE_RESOLUTION := 800x480
