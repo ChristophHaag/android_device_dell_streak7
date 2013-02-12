@@ -10,4 +10,4 @@ debug.sf.hw=1
 sys.usb.config=mtp,adb
 rild.libpath=/system/lib/libhuaweigeneric-ril.so
 rild.libargs=-d /dev/ttyUSB3
-
+wifi.supplicant_scan_interval=90
