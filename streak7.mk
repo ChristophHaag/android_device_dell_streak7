@@ -44,7 +44,8 @@ PRODUCT_COPY_FILES += \
 
     
 PRODUCT_PACKAGES += \
-    lights.tegra \
+    lights.streak7 \
+    sensors.streak7 \
     com.android.future.usb.accessory \
     libinvensense_mpl \
     drmserver \
@@ -66,7 +67,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    audio.primary.tegra \
+    audio.primary.streak7 \
     libaudioutils \
     liba2dp \
     libasound \
