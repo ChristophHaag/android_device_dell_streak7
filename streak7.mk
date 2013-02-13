@@ -7,6 +7,7 @@ TARGET_SCREEN_WIDTH := 800
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/nvram.txt:system/etc/wifi/nvram.txt \
+    $(LOCAL_PATH)/prebuilts/etc/nvcamera.conf:system/etc/nvcamera.conf \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.rc:root/init.streak7.rc \
     $(LOCAL_PATH)/prebuilts/root/fstab.streak7:root/fstab.streak7 \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.usb.rc:root/init.streak7.usb.rc \
