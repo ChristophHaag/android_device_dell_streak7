@@ -11,3 +11,7 @@ sys.usb.config=mtp,adb
 rild.libpath=/system/lib/libhuaweigeneric-ril.so
 rild.libargs=-d /dev/ttyUSB3
 wifi.supplicant_scan_interval=90
+#Goo Stuff
+ro.goo.developerid=giveen
+ro.goo.rom=JellyStreak
+ro.goo.version=2
