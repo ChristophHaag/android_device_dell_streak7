@@ -7,12 +7,13 @@ TARGET_SCREEN_WIDTH := 800
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/prebuilts/etc/nvram.txt:system/etc/wifi/nvram.txt \
+    $(LOCAL_PATH)/prebuilts/etc/nvcamera.conf:system/etc/nvcamera.conf \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.rc:root/init.streak7.rc \
     $(LOCAL_PATH)/prebuilts/root/fstab.streak7:root/fstab.streak7 \
     $(LOCAL_PATH)/prebuilts/root/init.streak7.usb.rc:root/init.streak7.usb.rc \
     $(LOCAL_PATH)/prebuilts/root/ueventd.streak7.rc:root/ueventd.streak7.rc \
     $(LOCAL_PATH)/prebuilts/root/sbin/ln_named_part:root/sbin/ln_named_part \
-    $(LOCAL_PATH)/prebuilts/root/default.prop:root/default.prop \
+    $(LOCAL_PATH)/prebuilts/bin/checkifmodemexists.sh:system/bin/checkifmodemexists.sh \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
@@ -44,7 +45,8 @@ PRODUCT_COPY_FILES += \
 
     
 PRODUCT_PACKAGES += \
-    lights.tegra \
+    lights.streak7 \
+    sensors.streak7 \
     com.android.future.usb.accessory \
     libinvensense_mpl \
     drmserver \
@@ -66,7 +68,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    audio.primary.tegra \
+    audio.primary.streak7 \
     libaudioutils \
     liba2dp \
     libasound \
@@ -86,6 +88,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.secure=0 \
+	persist.sys.strictmode.visual=0
+
+ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.strictmode.visual=0
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
