@@ -28,10 +28,6 @@ on init
     symlink /storage/usbdisk /mnt/usbdisk
     symlink /storage/usbdisk /usbdisk
 
-on early-boot
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-
 on fs
     # Okpa, symbolic link named partitions
     exec /sbin/ln_named_part mmcblk3 /dev
@@ -133,15 +129,16 @@ on boot
 # Emily, for application(TouchPanel) access
     chmod 666 /dev/atmel_misc_touch
 
+
 # Power management settings
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 216000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1000000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 216000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1000000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
     write /sys/module/cpuidle/parameters/lp2_in_idle 0
+
+# Interactive (initial) setup
+    write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
+    write /sys/devices/system/cpu/cpufreq/interactive/input_boost 1
+    write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 80
 
 # Default Read Ahead value for sdcards
     write /sys/block/mmcblk2/queue/read_ahead_kb 2048
