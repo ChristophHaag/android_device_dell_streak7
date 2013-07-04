@@ -47,7 +47,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     lights.streak7 \
     sensors.streak7 \
-    power.streak7
+    power.streak7 \
     com.android.future.usb.accessory \
     libinvensense_mpl \
     drmserver \
