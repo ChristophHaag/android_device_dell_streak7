@@ -88,12 +88,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.secure=0 \
-	persist.sys.strictmode.visual=0
-
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.strictmode.visual=0
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
