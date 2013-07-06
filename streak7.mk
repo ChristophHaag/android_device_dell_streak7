@@ -90,4 +90,4 @@ PRODUCT_CHARACTERISTICS := tablet
 
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
