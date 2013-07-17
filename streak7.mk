@@ -55,7 +55,7 @@ PRODUCT_PACKAGES += \
 #File System
 PRODUCT_PACKAGES += \
     setup_fs \
-    make_ext4fs \
+    make_ext4fs
 
 PRODUCT_PACKAGES += \
     libpkip \
