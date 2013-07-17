@@ -88,6 +88,15 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
 
+# override
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.wifi.country=US \
+    ro.carrier=wifi-only \
+    ro.opengles.version=131072 \
+    dalvik.vm.dexopt-data-only=1 \
+    persist.sys.usb.config=mtp,adb \
+    wifi.supplicant_scan_interval=180
+
 
 DEVICE_PACKAGE_OVERLAYS := device/dell/streak7/overlay
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
