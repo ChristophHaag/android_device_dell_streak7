@@ -18,8 +18,8 @@
   <ctl name="Digital Capture Volume" value="96" />
 
   <!-- Muxes -->
-  <ctl name="Left Input Mux" value="IN2L" />
-  <ctl name="Right Input Mux" value="IN2R" />
+  <ctl name="Left Input Mux" value="IN1L" />
+  <ctl name="Right Input Mux" value="IN1R" />
 
   <path name="speaker">
     <ctl name="Speaker Switch" value="1" />
