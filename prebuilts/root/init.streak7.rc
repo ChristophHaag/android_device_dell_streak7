@@ -1,4 +1,4 @@
-import init.streak7.usb.rc
+import /init.streak7.usb.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
