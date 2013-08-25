@@ -66,8 +66,8 @@ const struct sensors_module_t HAL_MODULE_INFO_SYM = {
         .version_major = 1,
         .version_minor = 0,
         .id = SENSORS_HARDWARE_MODULE_ID,
-        .name = "ZTE Racer Sensors Module",
-        .author = "Tom Giordano, Michael Bestas",
+        .name = "Dell Streak 7 Sensors Module",
+        .author = "Tom Giordano, Michael Bestas Giveen",
         .methods = &sensors_module_methods,
     },
     .get_sensors_list = sensors__get_sensors_list
