@@ -20,4 +20,5 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo cm_streak7-userdebug
+add_lunch_combo aokp_streak7-userdebug
+cp device/dell/streak7/streak7-product-makefile vendor/aokp/products/streak7.mk
