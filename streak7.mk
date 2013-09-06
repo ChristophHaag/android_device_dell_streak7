@@ -59,7 +59,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libpkip \
-    CMFileManager \
     libnetcmdiface \
     wmiconfig
 
@@ -91,7 +90,6 @@ PRODUCT_CHARACTERISTICS := tablet
 # override
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.wifi.country=US \
-    ro.carrier=wifi-only \
     ro.opengles.version=131072 \
     dalvik.vm.dexopt-data-only=1 \
     persist.sys.usb.config=mtp,adb \
