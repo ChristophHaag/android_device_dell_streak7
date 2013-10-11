@@ -42,6 +42,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
+# rild test stuff
+PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/prebuilts/etc/ppp/ip-down:system/etc/ppp/ip-down \
+  $(LOCAL_PATH)/prebuilts/etc/ppp/ip-up:system/etc/ppp/ip-up
     
 PRODUCT_PACKAGES += \
     lights.streak7 \

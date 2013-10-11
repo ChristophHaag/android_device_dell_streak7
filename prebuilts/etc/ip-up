@@ -1,0 +1,25 @@
+#!/system/bin/sh
+
+# rild test stuff
+
+case $1 in
+    ppp1)
+        /system/bin/iptables --flush;
+        /system/bin/iptables --table nat --flush;
+        /system/bin/iptables --delete-chain;
+        /system/bin/iptables --table nat --append POSTROUTING --out-interface ppp0 -j MASQUERADE;
+        /system/bin/iptables --append FORWARD --in-interface ppp1 -j ACCEPT;
+        echo 0 > /proc/sys/net/ipv4/ip_forward;
+        echo 1 > /proc/sys/net/ipv4/ip_forward;
+        ;;
+    ppp0)
+    /system/bin/setprop "net.interfaces.defaultroute" "$LINKNAME";
+    ;;
+esac
+
+/system/bin/setprop "net.$LINKNAME.dns1" "$DNS1"
+/system/bin/setprop "net.$LINKNAME.dns2" "$DNS2" 
+/system/bin/setprop "net.$LINKNAME.local-ip" "$IPLOCAL" 
+/system/bin/setprop "net.$LINKNAME.remote-ip" "$IPREMOTE" 
+/system/bin/setprop "net.$LINKNAME.gw" "$IPREMOTE"
+/system/bin/setprop "net.$LINKNAME.if" "$IFNAME"
