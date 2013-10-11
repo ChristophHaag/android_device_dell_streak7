@@ -95,12 +95,17 @@ on boot
     setprop ro.bt.bdaddr_path "/dev/bt_mac"
 
 
-    # ril stuff test
+    # rild stuff test
     service ril-daemon /system/bin/rild
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
     user root
     group radio cache inet misc audio
+    # https://groups.google.com/d/msg/android-building/wlF8ZcP2OhE/eJuAm36CL70J
+    chmod 04754 /system/etc/ppp/ip-up
+    chmod 04754 /system/etc/ppp/ip-down
+    chmod 04754 /system/bin/pppd
+
 
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
@@ -264,15 +269,15 @@ service setup_fs /system/bin/setup_fs \
 
 # ril stuff test
 on device-added-/dev/ttyUSB0
-chmod 0777 /dev/ttyUSB0
+    chmod 0777 /dev/ttyUSB0
 on device-added-/dev/ttyUSB1
-chmod 0777 /dev/ttyUSB1
+    chmod 0777 /dev/ttyUSB1
 on device-added-/dev/ttyUSB2
-chmod 0777 /dev/ttyUSB2
+    chmod 0777 /dev/ttyUSB2
 on device-added-/dev/ttyUSB3
-chmod 0777 /dev/ttyUSB3
+    chmod 0777 /dev/ttyUSB3
 on device-added-/dev/ttyUSB4
-chmod 0777 /dev/ttyUSB4
+    chmod 0777 /dev/ttyUSB4
 on device-added-/dev/ttyUSB5
-chmod 0777 /dev/ttyUSB5
+    chmod 0777 /dev/ttyUSB5
 
