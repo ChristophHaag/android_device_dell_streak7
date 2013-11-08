@@ -9,6 +9,7 @@ debug.sf.hw=1
 rild.libpath=/system/lib/libhuaweigeneric-ril.so
 rild.libargs=-d /dev/ttyUSB3
 wifi.supplicant_scan_interval=90
+ro.config.low_ram=true
 #Goo Stuff
 ro.goo.developerid=giveen
 ro.goo.rom=JellyStreak
