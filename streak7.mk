@@ -59,7 +59,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs
 
 PRODUCT_PACKAGES += \
-    libpkip \
     libnetcmdiface \
     wmiconfig
 
@@ -74,9 +73,7 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     tinyplay \
     tinycap \
-    tinymix \
-    rild \
-    libhuaweigeneric-ril
+    tinymix
 
 #Wifi
 PRODUCT_PACKAGES += \
